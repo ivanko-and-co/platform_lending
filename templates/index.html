@@ -1,0 +1,619 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style/reset.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="/static/style/style.css">
+  <link rel="stylesheet" href="/static/style/animations.css">
+  <title>Usexpo</title>
+  <link rel="shortcut icon" href="/static/media/svg/logo.svg" type="image/x-icon">
+</head>
+
+<body>
+  <div class="blur d-none"></div>
+  <header class="header">
+    <div class="header_container">
+      <div class="header_logo">
+        <img src="/static/media/svg/logo.svg" alt="logo">
+      </div>
+      <div class="header_contact d-flex">
+        <div class="header_phone">
+          <a href="tel:+74959700430"><h4>+7 (495) 970-04-30</h4></a>
+        </div>
+        <div class="header_email">
+          <a href="mailto:oboi@usexpo.ru">oboi@usexpo.ru</a>
+        </div>
+      </div>
+      <nav class="header_navigation">
+        <ul class="nav_list">
+          <a href="#ready_title" class="nav_list-link">
+            <li class="nav-item">
+              Каталог
+            </li>
+          </a>
+          <a href="#text-center" class="nav_list-link">
+            <li class="nav-item">
+              Галлерея работ
+            </li>
+          </a>
+          <a href="#container" class="nav_list-link">
+            <li class="nav-item">
+              Контактная информация
+            </li>
+          </a>
+        </ul>
+      </nav>
+      <button class="btn header_btn btn-popup">СДЕЛАТЬ ЗАКАЗ</button>
+    </div>
+    <div class="header_mobail">
+      <div class="header_logo">
+        <img src="/static/media/svg/logo.svg" alt="logo">
+      </div>
+      <div class="mobail_burger">
+        <div class="line_mobail"></div>
+        <div class="line_mobail"></div>
+        <div class="line_mobail"></div>
+      </div>
+      <div class="mobail_menu d-none">
+        <div class="mobail-closed">
+          <img src="/static/media/svg/close-w.svg" alt="closed">
+        </div>
+        <div class="header_contact d-flex">
+          <div class="header_phone">
+            <a href="tel:+74959700430"><h4>+7 (495) 970-04-30</h4></a>
+          </div>
+          <div class="header_email">
+            <a href="mailto:oboi@usexpo.ru">oboi@usexpo.ru</a>
+          </div>
+        </div>
+        <nav class="header_navigation">
+          <ul class="nav_list">
+            <a href="#ready_title" class="nav_list-link">
+              <li class="nav-item">
+                Каталог
+              </li>
+            </a>
+            <a href="#text-center" class="nav_list-link">
+              <li class="nav-item">
+                Галлерея работ
+              </li>
+            </a>
+            <a href="#container" class="nav_list-link">
+              <li class="nav-item">
+                Контактная информация
+              </li>
+            </a>
+          </ul>
+        </nav>
+        <button class="btn mobail-header_btn btn-popup">СДЕЛАТЬ ЗАКАЗ</button>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="popup-container d-none">
+    <form action="/form" method="post" class="popup popup-order">
+      <div class="popup_inner d-flex flex-column">
+        <h3 class="registration_popup-title">
+          Оставьте ваши контактные данные
+        </h3>
+        <div class="btn-closed">
+          <img src="/static/media/svg/closed.svg" alt="closed">
+        </div>
+        <div class="registration_form-content d-flex flex-column">
+          <div class="registration_form-input">
+            <label for="registName">Имя</label>
+            <input name="name" id="registName" type="text" placeholder="Ваше имя" required>
+          </div>
+          <div class="registration_form-input">
+            <label for="registPhone">Телефон</label>
+            <input name="phone" id="registPhone" type="tel" pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}"
+              placeholder="+7 (___)" required>
+          </div>
+          <div class="registration_form-input">
+            <label for="registEmail">E-mail</label>
+            <input name="email" id="registEmail" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              placeholder="Ваша почта" required>
+          </div>
+        </div>
+        <div class="registration_form-submit d-flex flex-column">
+          <input type="submit" value="ОФОРМИТЬ ЗАКАЗ" class="btn form-submit-popup">
+          <div class="registration_agree add-order_item">
+            <input id="popupAgree" type="radio" name="registration" value="agree" class="custom-radio" required>
+            <label for="popupAgree" class="add-order_label">
+              <div class="label-container">
+                <p>
+                  Отправляя сведения, я даю свое согласие на обработку моих персональных данных в соответствии
+                  с
+                  законом №152-ФЗ «О персональных данных» от 27.07.2006, ознакомился и принимаю условия
+                  <a href="#">Пользовательского соглашения</a>, <a href="#">Политики конфиденциальности</a> и
+                  <a href="#">Договора оферты</a>.
+                </p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <main>
+    <section class="main_slider">
+      <div class="swiper headerSwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="slide_content">
+              <h2 class="slide_title">
+                Экологичная печать
+              </h2>
+              <p class="slide_text">
+                Натуральные и безопасные фотообои, созданные специально для вашего благополучия.
+              </p>
+              <div class="slide_btn-container">
+                <button class="slide_btn btn-main btn-popup">ОФОРМИТЬ ЗАКАЗ</button>
+              </div>
+            </div>
+            <img src="/static/media/jpg/slide-1.jpg" alt="" class="slide_img">
+          </div>
+          <div class="swiper-slide">
+            <div class="slide_content">
+              <h2 class="slide_title">
+                По вашему дизайну
+              </h2>
+              <p class="slide_text">
+                Ваши идеи, наши фотообои: печать по вашему дизайну на современном оборудовании.
+              </p>
+              <div class="slide_btn-container">
+                <button class="slide_btn btn-main btn-popup">ОФОРМИТЬ ЗАКАЗ</button>
+              </div>
+            </div>
+            <img src="/static/media/jpg/slide-2.jpg" alt="" class="slide_img">
+          </div>
+          <div class="swiper-slide">
+            <div class="slide_content">
+              <h2 class="slide_title">
+                Помощь ИИ
+              </h2>
+              <p class="slide_text">
+                Будущее в деталях: создавайте фотообои с помощью искусственного интеллекта.
+              </p>
+              <div class="slide_btn-container">
+                <button class="slide_btn btn-main btn-popup">ОФОРМИТЬ ЗАКАЗ</button>
+              </div>
+            </div>
+            <img src="/static/media/jpg/slide-3.jpg" alt="" class="slide_img">
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <section class="ready-solutions">
+      <div class="container">
+        <div class="ready-solutions-top row col-lg-12">
+          <h2 class="ready_title" id="ready_title">
+            Готовые решения
+          </h2>
+          <p class="ready_text">
+            Вдохновляйтесь нашими готовыми дизайнами или создайте свой собственный уникальный фотообои.
+          </p>
+        </div>
+        <div class="ready_gallery row">
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Минимализм</span>
+            <img src="/static/media/jpg/gallery-1.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Абстракция и 3D</span>
+            <img src="/static/media/jpg/gallery-2.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Живопись и графика</span>
+            <img src="/static/media/jpg/gallery-3.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Природа</span>
+            <img src="/static/media/jpg/gallery-4.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Цветы и растения</span>
+            <img src="/static/media/jpg/gallery-5.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Городские пейзажи</span>
+            <img src="/static/media/jpg/gallery-6.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Животные</span>
+            <img src="/static/media/jpg/gallery-7.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Космос</span>
+            <img src="/static/media/jpg/gallery-8.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Для детей</span>
+            <img src="/static/media/jpg/gallery-9.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="calculater">
+      <div class="container">
+        <h2 class="text-center" id="text-center">Расчитать стоимость</h2>
+        <div class="row mt-5">
+          <div class="col-lg-6 display-row">
+            <div class="display_calculater d-flex ">
+              <div class="display">
+                <div class="display-top">
+                  <img src="/static/media/png/Interior_01.png" alt="office" class="display-furniture">
+                </div>
+                <div class="display-bottom">
+                  <div class="display-img">
+                    <img src="/static/media/svg/img.svg" alt="img">
+                  </div>
+                  <p class="display-text">Формат загружаемого файла: jpeg, gif или png, максимальный размер — 15 Mb</p>
+                  <div class="button-file d-flex flex-column">
+                    <input type="file" name="file" id="photo">
+                    <button class="btn display-btn">Загрузить фото</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="button-group_colculator">
+              <div class="display_radio_btn">
+                <input id="noFurniture" type="radio" name="radioDis" value="1" class="radio_furniture" checked>
+                <label for="noFurniture" class="button-colculator btn">Без мебели</label>
+              </div>
+
+              <div class="display_radio_btn ">
+                <input id="officeFurniture" type="radio" name="radioDis" value="2" class="radio_furniture">
+                <label for="officeFurniture" class="button-colculator btn">Офис</label>
+              </div>
+
+              <div class="display_radio_btn">
+                <input id="hallFurniture" type="radio" name="radioDis" value="3" class="radio_furniture">
+                <label for="hallFurniture" class="button-colculator btn">Зал</label>
+              </div>
+
+              <div class="display_radio_btn">
+                <input id="bedroomFurniture" type="radio" name="radioDis" value="4" class="radio_furniture">
+                <label for="bedroomFurniture" class="button-colculator btn">Спальня</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="account_calculator col-lg-5 offset-lg-1">
+            <form class="account_calculator-form ">
+              <div class="account_calculater-info">
+                <div class="account_item-one">
+                  <h4>Размер стены:</h4>
+                  <div class="account_wh d-flex">
+                    <div class="account_width">
+                      <label for="accountWidth">Ширина, см</label>
+                      <input type="number" class="input-wh" value="100">
+                    </div>
+                    <div class="account_width">
+                      <label for="accountHeight">Высота, см</label>
+                      <input type="number" class="input-wh" value="100">
+                    </div>
+                  </div>
+                </div>
+                <div class="account_item-two">
+                  <h4 class="account_title">Материалы для обоев:</h4>
+                  <div class="account_texture">
+                    <div class="account_radio_btn">
+                      <input id="textural" type="radio" name="radioTex" value="textural" class="radio_account" checked>
+                      <label for="textural" class="button-account">Текстурные</label>
+                    </div>
+
+                    <div class="account_radio_btn">
+                      <input id="smooth" type="radio" name="radioTex" value="smooth" class="radio_account">
+                      <label for="smooth" class="button-account">Гладкие</label>
+                    </div>
+
+                    <div class="account_radio_btn">
+                      <input id="frescoes" type="radio" name="radioTex" value="frescoes" class="radio_account">
+                      <label for="frescoes" class="button-account">Фрески</label>
+                    </div>
+                  </div>
+                  <div class="account_display">
+                    <div class="account_display-texture">
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="display-textural1" type="radio" name="radio-item" value="textural1"
+                            class="texture-item-input">
+                          <label for="display-textural1" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Блюбэк</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <span>650 ₽/М2</span>
+                            <p class="account_price">215 ₽/М2</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="display-textural2" type="radio" name="radio-item" value="textural2"
+                            class="texture-item-input">
+                          <label for="display-textural2" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Блк</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <span>650 ₽/М2</span>
+                            <p class="account_price">844 ₽/М2</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="account_display-smooth d-none">
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="display-textural3" type="radio" name="radio-item" value="textural3"
+                            class="texture-item-input">
+                          <label for="display-textural3" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Блюбэк</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <span>650 ₽/М2</span>
+                            <p class="account_price">223 ₽/М2</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="account_display-frescoes d-none">
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="display-textural4" type="radio" name="radio-item" value="textural4"
+                            class="texture-item-input">
+                          <label for="display-textural4" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Блюбэк</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <span>650 ₽/М2</span>
+                            <p class="account_price">233 ₽/М2</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="account_item-three">
+                  <h4 class="add-order_title">Добавить к заказу:</h4>
+                  <div class="add-order_container">
+                    <div class="add-order_item">
+                      <input id="addItemOne" type="radio" name="addItemOne" value="addItemOne" class="custom-radio">
+                      <label for="addItemOne" class="add-order_label">
+                        <div class="label-container">
+                          <h4>Латексная печать</h4>
+                          <span>200 ₽/М2</span>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="add-order_item">
+                      <input id="addItemTwo" type="radio" name="addItemTwo" value="addItemTwo" class="custom-radio"
+                        checked>
+                      <label for="addItemTwo" class="add-order_label">
+                        <div class="label-container">
+                          <h4>Добавить клей</h4>
+                          <span>350 ₽</span>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="add-order_item">
+                      <input id="addItemThree" type="radio" name="addItemThree" value="addItemThree"
+                        class="custom-radio">
+                      <label for="addItemThree" class="add-order_label">
+                        <div class="label-container">
+                          <h4>Покрыть лаком</h4>
+                          <span>399 ₽/М2</span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-result">
+                  <div class="order-result-info">
+                    <h4 class="order-result_title">Текущая стоимость заказа</h4>
+                    <p class="order-result-price">
+                      515 ₽
+                    </p>
+                    <span>Минимальная стоимость заказа 2000 руб.</span>
+                  </div>
+                  <div class="order-step-two">ШАГ 2</div>
+                </div>
+              </div>
+
+              <div class="account_calculator-registration d-none">
+                <div class="account_buttin-back">
+                  <span class="account_buttin-back-item"> &lt; Назад</span>
+                </div>
+                <div class="account_registration-form d-flex flex-column">
+                  <h3 class="registration_form-title">
+                    Оставьте ваши контактные данные
+                  </h3>
+                  <div class="registration_form-content d-flex flex-column">
+                    <div class="registration_form-input">
+                      <label for="registName">Имя</label>
+                      <input id="registName" type="text" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="registration_form-input">
+                      <label for="registPhone">Телефон</label>
+                      <input id="registPhone" type="tel" pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}"
+                        placeholder="+7 (___)" required>
+                    </div>
+                    <div class="registration_form-input">
+                      <label for="registEmail">E-mail</label>
+                      <input id="registEmail" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        placeholder="Ваша почта" required>
+                    </div>
+                  </div>
+                  <div class="registration_form-submit d-flex flex-column">
+                    <input type="submit" value="ОФОРМИТЬ ЗАКАЗ" class="form-submit">
+                    <div class="registration_agree add-order_item">
+                      <input id="regAgree" type="radio" name="registration" value="agree" class="custom-radio" required>
+                      <label for="regAgree" class="add-order_label">
+                        <div class="label-container">
+                          <p>
+                            Отправляя сведения, я даю свое согласие на обработку моих персональных данных в соответствии
+                            с
+                            законом №152-ФЗ «О персональных данных» от 27.07.2006, ознакомился и принимаю условия
+                            <a href="#">Пользовательского соглашения</a>, <a href="#">Политики конфиденциальности</a> и
+                            <a href="#">Договора оферты</a>.
+                          </p>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="calculator-registration-completed d-flex flex-column mt-5 d-none">
+                <h3>Спасибо за заявку!</h3>
+                <h4>Наши менеджеры вскоре свяжутся с вами для уточнения деталей</h4>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="banner">
+      <div class="banner_inner">
+        <div class="container">
+          <div class="banner_info">
+            <h2 class="banner_title">Не знаете, что выбрать?</h2>
+            <p class="banner_text">Оставьте заявку и наши специалисты проконсультируют вас и помогут подобрать лучший
+              вариант дизайна для оформления стены.</p>
+            <div class="banner_btn-container">
+              <button class="banner_btn btn-main btn-popup">ОСТАВИТЬ ЗАЯВКУ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="best-works">
+      <div class="container">
+        <div class="best-works_inner row">
+          <div class="best-works_info col-lg-5">
+            <h1 class="best-works_title">
+              Наши лучшие работы
+            </h1>
+            <p class="best-works_text">
+              Вдохновляйтесь нашими готовыми дизайнами или создайте свой собственный уникальный фотообои.
+            </p>
+          </div>
+          <div class="best-works_slider col-lg-7">
+            <div class="swiper bestSwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="/static/media/jpg/best-slide-3.jpg" alt="1" class="slide-best_img">
+                </div>
+                <div class="swiper-slide">
+                  <img src="/static/media/jpg/best-slide-1.jpg" alt="2" class="slide-best_img">
+                </div>
+                <div class="swiper-slide">
+                  <img src="/static/media/jpg/best-slide-2.jpg" alt="3" class="slide-best_img">
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+              <div class="next"></div>
+              <div class="prev"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="map">
+      <div style="position:relative;overflow:hidden;"><a
+          href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps"
+          style="color:#eee;font-size:12px;position:absolute;top:0px;">Москва</a><a
+          href="https://yandex.ru/maps/213/moscow/geo/kozhevnicheskaya_ulitsa/10049526/?ll=37.645823%2C55.729735&utm_medium=mapframe&utm_source=maps&z=18.35"
+          style="color:#eee;font-size:12px;position:absolute;top:14px;">Кожевническая улица — Яндекс Карты</a><iframe
+          src="https://yandex.ru/map-widget/v1/?ll=37.645823%2C55.729735&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCggxMDA0OTUyNhJB0KDQvtGB0YHQuNGPLCDQnNC-0YHQutCy0LAsINCa0L7QttC10LLQvdC40YfQtdGB0LrQsNGPINGD0LvQuNGG0LAiCg29lBZCFT3rXkI%2C&z=18.35"
+          width="100%" height="748" frameborder="1" allowfullscreen="true"
+          style="position:relative; pointer-events: none;"></iframe></div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer_inner">
+      <div class="container" id="container">
+        <div class="row footer_row">
+          <div class="col-lg-3 footer_info">
+            <div class="footer_logo">
+              <img src="/static/media/svg/logo.svg" alt="logo">
+            </div>
+            <div class="footer_streat">
+              <span>
+                Павелецкая площадь, 1А, стр. 1, офис 9, Россия, Москва
+              </span>
+            </div>
+          </div>
+          <div class="col-lg-2 footer_contact d-flex flex-column">
+            <div class="footer_email">
+              <a href="mailto:oboi@usexpo.ru">oboi@usexpo.ru</a>
+            </div>
+            <div class="footer_phone">
+              <a href="tel:+74959700430"><span>+7 (495) 970-04-30</span></a>
+            </div>
+          </div>
+          <div class="col-lg-3 footer_nav">
+            <ul class="nav_list-footer d-flex flex-column">
+              <a href="#" class="nav_list-link">
+                <li class="nav-item">
+                  Договор оферты
+                </li>
+              </a>
+              <a href="#" class="nav_list-link">
+                <li class="nav-item">
+                  Политика конфиденциальности
+                </li>
+              </a>
+              <a href="#" class="nav_list-link">
+                <li class="nav-item">
+                  Доставка и возврат
+                </li>
+              </a>
+            </ul>
+          </div>
+          <div class="col-lg-4 d-flex footer_button">
+            <button class="btn header_btn footer_btn btn-popup">ОБРАТНЫЙ ЗВОНОК</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="/static/scripts/main.js"></script>
+  <script src="/static/scripts/calculater.js"></script>
+  <script src="/static/scripts/slider.js"></script>
+</body>
+
+</html>

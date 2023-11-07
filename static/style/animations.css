@@ -1,0 +1,171 @@
+/* анимация "готовые решения" */
+.ready_gallery-item:hover .ready_gallery-name {
+    transition: all 1s;
+    animation: text-appearance 1s ease forwards;
+}
+
+@keyframes text-appearance {
+    0% {
+        transform: translateY(-50%);
+    }
+
+    100% {
+        transform: translateY(20%);
+    }
+}
+
+
+/* анимация дисплея фотообоев */
+
+.display-two .button-file {
+    transition: all 1s;
+    animation: up-button .7s ease-in-out forwards;
+}
+
+@keyframes up-button {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(-450%);
+    }
+}
+
+.display-two .display-text {
+    transition: all .5s;
+    text-align: center;
+    animation: up-text .7s ease-in-out forwards;
+}
+
+@keyframes up-text {
+    0% {
+        transform: translateY(100%);
+    }
+
+    50%{
+        max-width: 230px;
+    }
+
+    100% {
+        text-align: left;
+        margin-right: auto;
+        max-width: 230px;
+        transform: translateY(-200%);
+    }
+}
+
+.display-two .display-img {
+    transition: all .5s;
+    animation: up-img .7s ease forwards;
+}
+
+@keyframes up-img {
+    0% {
+        transform: translateY(100%);
+        width: 200px;
+        height: 200px;
+    }
+
+    
+
+    100% {
+        margin-left: auto;
+        width: 25%;
+        height: 25%;
+        transform: translateY(-30%);
+    }
+}
+
+
+/* no-mebel */
+
+.display-one .button-file {
+    transition: all .5s;
+    animation: up-buttonOne .7s ease-in-out forwards;
+}
+
+@keyframes up-buttonOne {
+    0% {
+        transform: translateY(-450%);
+    }
+
+    100% {
+        transform: translateY(-15%);
+    }
+}
+
+.display-one .display-text {
+    transition: all 1s;
+    animation: up-textOne .7s ease-in-out forwards;
+}
+
+@keyframes up-textOne {
+    0% {
+        text-align: left;
+        transform: translateY(-300%);
+    }
+
+    100% {
+        text-align: center;
+        transform: translateY(-20%);
+    }
+}
+
+.display-one .display-img {
+    transition: all 1s;
+    animation: up-imgOne 1s ease-in-out forwards;
+}
+
+@keyframes up-imgOne {
+    0% {
+        transform: translateY(-30%);
+        margin-left: auto;
+        width: 96px;
+        height: 96px;
+    }
+
+
+    100% {
+        width: 200px;
+        height: 200px;
+        transform: translateY(-10%);
+        transition: all 1s;
+    }
+}
+
+@media (max-width: 600px) {
+	@keyframes up-img {
+        0% {
+            transform: translateY(100%);
+            width: 200px;
+            height: 200px;
+        }
+    
+        100% {
+            margin-left: auto;
+            width: 96px;
+            height: 96px;
+            transform: translateY(-10%);
+        }
+    }
+
+    @keyframes up-text {
+        0% {
+            transform: translateY(100%);
+        }
+    
+        50%{
+            max-width: 230px;
+        }
+    
+        100% {
+            text-align: left;
+            margin-right: 100px;
+            max-width: 230px;
+            transform: translateY(-160%);
+        }
+    }
+}
+
+/*  */
