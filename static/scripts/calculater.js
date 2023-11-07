@@ -1,3 +1,4 @@
+
 function furnitureSelection() {
     let displayButtons = document.querySelectorAll(".radio_furniture");
     let displayMain = document.querySelector(".display");
@@ -15,6 +16,13 @@ function furnitureSelection() {
                     displayMain.classList.add("display-two");
                     displayMain.classList.remove("display-one");
                     displayImg.src = '/static/media/png/Interior_01.png';
+                }
+                if(button.id === "hallFurniture"){
+                    displayTop.classList.remove("d-opasity");
+                    displayTop.classList.add("d-opasity-1");
+                    displayMain.classList.add("display-two");
+                    displayMain.classList.remove("display-one");
+                    displayImg.src = '/static/media/png/Interior_02.png';
                 }
                 if (button.id === "noFurniture") {
                     displayTop.classList.add("d-opasity");
@@ -39,19 +47,22 @@ function typeSelection() {
         button.addEventListener('click', () => {
             if (button.checked) {
                 if (button.id === "textural") {
-                    accountTexture.classList.remove("d-none");
-                    accountSmooth.classList.add("d-none");
-                    accountFrescoes.classList.add("d-none");
+                    accountTexture.classList.remove("d-opasity");
+
+                    accountSmooth.classList.add("d-opasity");
+                    accountFrescoes.classList.add("d-opasity");
                 }
                 if (button.id === "smooth") {
-                    accountSmooth.classList.remove("d-none");
-                    accountTexture.classList.add("d-none");
-                    accountFrescoes.classList.add("d-none");
+                    accountSmooth.classList.remove("d-opasity");
+
+                    accountTexture.classList.add("d-opasity");
+                    accountFrescoes.classList.add("d-opasity");
                 }
                 if (button.id === "frescoes") {
-                    accountFrescoes.classList.remove("d-none");
-                    accountSmooth.classList.add("d-none");
-                    accountTexture.classList.add("d-none");
+                    accountFrescoes.classList.remove("d-opasity");
+
+                    accountSmooth.classList.add("d-opasity");
+                    accountTexture.classList.add("d-opasity");
                 }
             }
         })
@@ -61,28 +72,6 @@ function typeSelection() {
 
 typeSelection();
 
-// let costMaterial;
-// let costAddOrder;
-// function materialSelect() {
-//     let materialButtons = document.querySelectorAll(".texture-item-input");
-//     let price;
-//     for(i = 0; i < materialButtons.length; i++){
-//         let button = materialButtons[i];
-//         let buttonParent = button.parentNode;
-//         button.addEventListener('click', () => {
-//             if (button.checked) {
-//                 let materialItemPrice = buttonParent.querySelector(".account_price");
-//                 n = materialItemPrice.innerHTML;
-//                 price = n;
-//             } 
-//         })
-//         return console.log(price) 
-//     }
-
-// }
-
-// materialSelect();
-// console.log(materialSelect())
 
 
 function addToOrder() {
@@ -101,6 +90,7 @@ function addToOrder() {
 }
 
 addToOrder();
+
 
 
 stepNext = () => {
@@ -132,7 +122,7 @@ accountSubmit = () => {
     let calculaterInfo = document.querySelector(".account_calculater-info");
     let calculaterRegist = document.querySelector(".account_calculator-registration");
     let registrationСompleted = document.querySelector(".calculator-registration-completed");
-    formSubmit.addEventListener('submit', (event) =>{
+    formSubmit.addEventListener('submit', (event) => {
         event.preventDefault();
         calculaterInfo.classList.add("d-none");
         calculaterRegist.classList.add("d-none");
@@ -141,3 +131,111 @@ accountSubmit = () => {
 }
 
 accountSubmit();
+
+
+//получение цены 
+transforNumber = (price) => {
+    price = price.replace(/[^0-9]/g, '');
+    price = Number(price);
+    return price;
+}
+
+
+let calculaterForm = document.querySelector(".account_calculator-form");
+let accountOrder = document.querySelector(".account_item-three");
+let addItem1 = document.querySelector('input[name="add-item-1"]');
+let addItem2 = document.querySelector('input[name="add-item-2"]');
+let addItem3 = document.querySelector('input[name="add-item-3"]');
+let result = document.querySelector(".order-result-price");
+let buttonStepTwo = document.querySelector(".order-step-two");
+
+let resultPrice = 0;
+buttonStepTwo.classList.add("block");
+
+function updateTotalPrice() {
+    result.dataset.result = resultPrice;
+    resultOutput = resultPrice.toLocaleString();
+    result.textContent = resultOutput + "₽";
+}
+
+
+
+
+
+getSize = () => {
+    let getWidth = document.querySelector("#accountWidth");
+    let getHeight = document.querySelector("#accountHeight");
+    let width = Number(getWidth.value) / 100;
+    let height = Number(getHeight.value) / 100;
+
+    let sizeResult = Math.ceil(width * height);
+    return sizeResult;
+}
+
+
+
+calculationMaterial = () => {
+    let itemCheck = calculaterForm.querySelectorAll('input[name=radio-item]:checked');
+    let size = getSize();
+    for (i = 0; i < itemCheck.length; i++) {
+        let item = itemCheck[i];
+        let itemPrice = Number(item.value);
+        resultPrice = size * itemPrice;
+    }
+
+    updateTotalPrice();
+
+
+    let resultM = Number(result.dataset.result);
+    if (addItem1.checked) {
+        let addPrice = calculateService(addItem1, size);
+        resultPrice = resultM + addPrice;
+        resultM += addPrice;
+    }
+
+    if (addItem2.checked) {
+        let addPrice2 = Number(addItem2.value);
+        resultPrice = resultM + addPrice2;
+        resultM += addPrice2;
+    }
+    if (addItem3.checked) {
+        let addPrice3 = calculateService(addItem3, size);
+        resultPrice = resultM + addPrice3;
+        resultM += addPrice3;
+    }
+
+    updateTotalPrice();
+
+
+    if (resultM < 2000) {
+        return;
+    }
+    else {
+        buttonStepTwo.classList.remove("block");
+    }
+}
+
+calculateService = (addItem, size) => {
+    servicePrice = Number(addItem.value);
+    let priceItem = servicePrice * size;
+    return Number(priceItem);
+}
+
+calculaterForm.addEventListener('change', () => {
+    calculationMaterial();
+})
+
+
+getCheck = () => {
+    let itemCheck = calculaterForm.querySelectorAll('input[name=radio-item]:checked');
+    for (i = 0; i < itemCheck.length; i++) {
+        for (i = 0; i < itemCheck.length; i++) {
+            let item = itemCheck[i];
+            let itemPrice = Number(item.value);
+            resultPrice = size * itemPrice;
+        }
+    
+        updateTotalPrice();
+    }
+}
+

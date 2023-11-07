@@ -23,25 +23,25 @@
       </div>
       <div class="header_contact d-flex">
         <div class="header_phone">
-          <a href="tel:+74959700430"><h4>+7 (495) 970-04-30</h4></a>
+          <h4>+7 (495) 970-04-30</h4>
         </div>
         <div class="header_email">
-          <a href="mailto:oboi@usexpo.ru">oboi@usexpo.ru</a>
+          <a href="#">oboi@usexpo.ru</a>
         </div>
       </div>
       <nav class="header_navigation">
         <ul class="nav_list">
-          <a href="#ready_title" class="nav_list-link">
+          <a href="#" class="nav_list-link">
             <li class="nav-item">
               Каталог
             </li>
           </a>
-          <a href="#text-center" class="nav_list-link">
+          <a href="#" class="nav_list-link">
             <li class="nav-item">
               Галлерея работ
             </li>
           </a>
-          <a href="#container" class="nav_list-link">
+          <a href="#" class="nav_list-link">
             <li class="nav-item">
               Контактная информация
             </li>
@@ -65,25 +65,25 @@
         </div>
         <div class="header_contact d-flex">
           <div class="header_phone">
-            <a href="tel:+74959700430"><h4>+7 (495) 970-04-30</h4></a>
+            <h4>+7 (495) 970-04-30</h4>
           </div>
           <div class="header_email">
-            <a href="mailto:oboi@usexpo.ru">oboi@usexpo.ru</a>
+            <a href="#">oboi@usexpo.ru</a>
           </div>
         </div>
         <nav class="header_navigation">
           <ul class="nav_list">
-            <a href="#ready_title" class="nav_list-link">
+            <a href="#" class="nav_list-link">
               <li class="nav-item">
                 Каталог
               </li>
             </a>
-            <a href="#text-center" class="nav_list-link">
+            <a href="#" class="nav_list-link">
               <li class="nav-item">
                 Галлерея работ
               </li>
             </a>
-            <a href="#container" class="nav_list-link">
+            <a href="#" class="nav_list-link">
               <li class="nav-item">
                 Контактная информация
               </li>
@@ -97,7 +97,7 @@
 
 
   <div class="popup-container d-none">
-    <form action="/form" method="post" class="popup popup-order">
+    <form method="post" class="popup popup-order">
       <div class="popup_inner d-flex flex-column">
         <h3 class="registration_popup-title">
           Оставьте ваши контактные данные
@@ -108,16 +108,16 @@
         <div class="registration_form-content d-flex flex-column">
           <div class="registration_form-input">
             <label for="registName">Имя</label>
-            <input name="name" id="registName" type="text" placeholder="Ваше имя" required>
+            <input id="registName" type="text" placeholder="Ваше имя" required>
           </div>
           <div class="registration_form-input">
             <label for="registPhone">Телефон</label>
-            <input name="phone" id="registPhone" type="tel" pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}"
+            <input id="registPhone" type="tel" pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}"
               placeholder="+7 (___)" required>
           </div>
           <div class="registration_form-input">
             <label for="registEmail">E-mail</label>
-            <input name="email" id="registEmail" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            <input id="registEmail" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               placeholder="Ваша почта" required>
           </div>
         </div>
@@ -197,7 +197,7 @@
     <section class="ready-solutions">
       <div class="container">
         <div class="ready-solutions-top row col-lg-12">
-          <h2 class="ready_title" id="ready_title">
+          <h2 class="ready_title">
             Готовые решения
           </h2>
           <p class="ready_text">
@@ -247,7 +247,7 @@
 
     <section class="calculater">
       <div class="container">
-        <h2 class="text-center" id="text-center">Расчитать стоимость</h2>
+        <h2 class="text-center">Расчитать стоимость</h2>
         <div class="row mt-5">
           <div class="col-lg-6 display-row">
             <div class="display_calculater d-flex ">
@@ -259,7 +259,12 @@
                   <div class="display-img">
                     <img src="/static/media/svg/img.svg" alt="img">
                   </div>
-                  <p class="display-text">Формат загружаемого файла: jpeg, gif или png, максимальный размер — 15 Mb</p>
+                  <p class="display-text">
+                    Формат загружаемого файла: jpeg, gif или png, максимальный размер — 15 Mb
+                      <a href="#" class="file-link display-file">
+                        Тех характеристики файла для печати
+                      </a>
+                  </p>
                   <div class="button-file d-flex flex-column">
                     <input type="file" name="file" id="photo">
                     <button class="btn display-btn">Загрузить фото</button>
@@ -294,42 +299,48 @@
             <form class="account_calculator-form ">
               <div class="account_calculater-info">
                 <div class="account_item-one">
-                  <h4>Размер стены:</h4>
+                  <h4 class="medium">Размер стены:</h4>
                   <div class="account_wh d-flex">
                     <div class="account_width">
                       <label for="accountWidth">Ширина, см</label>
-                      <input type="number" class="input-wh" value="100">
+                      <input type="number" class="input-wh" value="100" id="accountWidth">
                     </div>
                     <div class="account_width">
                       <label for="accountHeight">Высота, см</label>
-                      <input type="number" class="input-wh" value="100">
+                      <input type="number" class="input-wh" value="100" id="accountHeight">
+                    </div>
+                    <div class="specifications_file">
+                      <a href="#" class="file-link">
+                        Тех характеристики файла для печати
+                      </a>
                     </div>
                   </div>
                 </div>
                 <div class="account_item-two">
-                  <h4 class="account_title">Материалы для обоев:</h4>
+                  <h4 class="account_title medium">Материалы для обоев:</h4>
                   <div class="account_texture">
-                    <div class="account_radio_btn">
+                    <div class="account_radio_btn btn-textural">
                       <input id="textural" type="radio" name="radioTex" value="textural" class="radio_account" checked>
                       <label for="textural" class="button-account">Текстурные</label>
                     </div>
 
-                    <div class="account_radio_btn">
+                    <div class="account_radio_btn btn-smooth">
                       <input id="smooth" type="radio" name="radioTex" value="smooth" class="radio_account">
                       <label for="smooth" class="button-account">Гладкие</label>
                     </div>
 
-                    <div class="account_radio_btn">
+                    <div class="account_radio_btn btn-frescoes">
                       <input id="frescoes" type="radio" name="radioTex" value="frescoes" class="radio_account">
                       <label for="frescoes" class="button-account">Фрески</label>
                     </div>
+                    <div class="line"></div>
                   </div>
-                  <div class="account_display">
+                  <div class="account_display" style="height: 146px;">
                     <div class="account_display-texture">
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural1" type="radio" name="radio-item" value="textural1"
-                            class="texture-item-input">
+                          <input id="display-textural1" type="radio" name="radio-item" value="215"
+                            class="texture-item-input" checked>
                           <label for="display-textural1" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
@@ -338,14 +349,14 @@
                             </div>
                           </label>
                           <div class="label-container-two">
-                            <span>650 ₽/М2</span>
-                            <p class="account_price">215 ₽/М2</p>
+                            <span>650 ₽/М²</span>
+                            <p class="account_price">215 ₽/М²</p>
                           </div>
                         </div>
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural2" type="radio" name="radio-item" value="textural2"
+                          <input id="display-textural2" type="radio" name="radio-item" value="844"
                             class="texture-item-input">
                           <label for="display-textural2" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
@@ -355,46 +366,91 @@
                             </div>
                           </label>
                           <div class="label-container-two">
-                            <span>650 ₽/М2</span>
-                            <p class="account_price">844 ₽/М2</p>
+                            <span>650 ₽/М²</span>
+                            <p class="account_price">844 ₽/М²</p>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="account_display-smooth d-none">
+                    <div class="account_display-smooth d-opasity">
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural3" type="radio" name="radio-item" value="textural3"
+                          <input id="display-textural3" type="radio" name="radio-item" value="223"
                             class="texture-item-input">
                           <label for="display-textural3" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
-                              <h4>Блюбэк</h4>
+                              <h4>Пыщлщл</h4>
                               <span>Цветопередача</span>
                             </div>
                           </label>
                           <div class="label-container-two">
-                            <span>650 ₽/М2</span>
-                            <p class="account_price">223 ₽/М2</p>
+                            <span>650 ₽/М²</span>
+                            <p class="account_price">223 ₽/М²</p>
+                          </div>
+                        </div>
+                        <div class="texture-item">
+                          <input id="display-textural3" type="radio" name="radio-item" value="223"
+                            class="texture-item-input">
+                          <label for="display-textural3" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Пыщлщл</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <span>650 ₽/М²</span>
+                            <p class="account_price">223 ₽/М²</p>
+                          </div>
+                        </div>
+                        <div class="texture-item">
+                          <input id="display-textural3" type="radio" name="radio-item" value="223"
+                            class="texture-item-input">
+                          <label for="display-textural3" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Пыщлщл</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <span>650 ₽/М²</span>
+                            <p class="account_price">223 ₽/М²</p>
+                          </div>
+                        </div>
+                        <div class="texture-item">
+                          <input id="display-textural3" type="radio" name="radio-item" value="223"
+                            class="texture-item-input">
+                          <label for="display-textural3" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Пыщлщл</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <span>650 ₽/М²</span>
+                            <p class="account_price">223 ₽/М²</p>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="account_display-frescoes d-none">
+                    <div class="account_display-frescoes d-opasity">
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural4" type="radio" name="radio-item" value="textural4"
+                          <input id="display-textural4" type="radio" name="radio-item" value="233"
                             class="texture-item-input">
                           <label for="display-textural4" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
-                              <h4>Блюбэк</h4>
+                              <h4>Вльлмь</h4>
                               <span>Цветопередача</span>
                             </div>
                           </label>
                           <div class="label-container-two">
-                            <span>650 ₽/М2</span>
-                            <p class="account_price">233 ₽/М2</p>
+                            <span>650 ₽/М²</span>
+                            <p class="account_price">233 ₽/М²</p>
                           </div>
                         </div>
                       </div>
@@ -402,44 +458,50 @@
                   </div>
                 </div>
                 <div class="account_item-three">
-                  <h4 class="add-order_title">Добавить к заказу:</h4>
+                  <h4 class="add-order_title medium">Добавить к заказу:</h4>
                   <div class="add-order_container">
-                    <div class="add-order_item">
-                      <input id="addItemOne" type="radio" name="addItemOne" value="addItemOne" class="custom-radio">
+                    <div class="add-order_item add-order_checkbox">
+                      <input id="addItemOne" type="checkbox" name="add-item-1" value="200"
+                        class="custom-checkbox add-order_input">
                       <label for="addItemOne" class="add-order_label">
                         <div class="label-container">
                           <h4>Латексная печать</h4>
-                          <span>200 ₽/М2</span>
+                          <span class="add-order_price">200 ₽/М²</span>
                         </div>
                       </label>
                     </div>
-                    <div class="add-order_item">
-                      <input id="addItemTwo" type="radio" name="addItemTwo" value="addItemTwo" class="custom-radio"
-                        checked>
+                    <div class="add-order_item add-order_checkbox">
+                      <input id="addItemTwo" type="checkbox" name="add-item-2" value="350"
+                        class="custom-checkbox add-order_input">
                       <label for="addItemTwo" class="add-order_label">
                         <div class="label-container">
                           <h4>Добавить клей</h4>
-                          <span>350 ₽</span>
+                          <span class="add-order_price">350 ₽</span>
                         </div>
                       </label>
                     </div>
-                    <div class="add-order_item">
-                      <input id="addItemThree" type="radio" name="addItemThree" value="addItemThree"
-                        class="custom-radio">
+                    <div class="add-order_item add-order_checkbox">
+                      <input id="addItemThree" type="checkbox" name="add-item-3" value="399"
+                        class="custom-checkbox add-order_input">
                       <label for="addItemThree" class="add-order_label">
                         <div class="label-container">
                           <h4>Покрыть лаком</h4>
-                          <span>399 ₽/М2</span>
+                          <span class="add-order_price">399 ₽/М²</span>
                         </div>
                       </label>
+                    </div>
+                    <div class="rules_file">
+                      <a href="#" class="file-link">
+                        Правила монтажа обоев
+                      </a>
                     </div>
                   </div>
                 </div>
                 <div class="order-result">
                   <div class="order-result-info">
-                    <h4 class="order-result_title">Текущая стоимость заказа</h4>
-                    <p class="order-result-price">
-                      515 ₽
+                    <h4 class="order-result_title medium">Текущая стоимость заказа</h4>
+                    <p class="order-result-price medium" data-result="">
+                      215₽
                     </p>
                     <span>Минимальная стоимость заказа 2000 руб.</span>
                   </div>
@@ -525,21 +587,21 @@
             </p>
           </div>
           <div class="best-works_slider col-lg-7">
-            <div class="swiper bestSwiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <img src="/static/media/jpg/best-slide-3.jpg" alt="1" class="slide-best_img">
-                </div>
-                <div class="swiper-slide">
-                  <img src="/static/media/jpg/best-slide-1.jpg" alt="2" class="slide-best_img">
-                </div>
-                <div class="swiper-slide">
-                  <img src="/static/media/jpg/best-slide-2.jpg" alt="3" class="slide-best_img">
+            <div class="bestSwiper">
+              <div class="slider-wrapper">
+                <div class="slider">
+                  <div class="slide one-slide">
+                    <img src="/static/media/jpg/best-slide-1.jpg" alt="">
+                  </div>
+                  <div class="slide">
+                    <img src="/static/media/jpg/best-slide-2.jpg" alt="">
+                  </div>
+                  <div class="slide third-slide">
+                    <img src="/static/media/jpg/best-slide-3.jpg" alt="">
+                  </div>
                 </div>
               </div>
-              <div class="swiper-pagination"></div>
-              <div class="next"></div>
-              <div class="prev"></div>
+              <!-- <div class="swiper-pagination"></div> -->
             </div>
           </div>
         </div>
@@ -558,7 +620,7 @@
   </main>
   <footer class="footer">
     <div class="footer_inner">
-      <div class="container" id="container">
+      <div class="container">
         <div class="row footer_row">
           <div class="col-lg-3 footer_info">
             <div class="footer_logo">
@@ -572,10 +634,10 @@
           </div>
           <div class="col-lg-2 footer_contact d-flex flex-column">
             <div class="footer_email">
-              <a href="mailto:oboi@usexpo.ru">oboi@usexpo.ru</a>
+              <a href="#">oboi@usexpo.ru</a>
             </div>
             <div class="footer_phone">
-              <a href="tel:+74959700430"><span>+7 (495) 970-04-30</span></a>
+              <span>+7 (495) 970-04-30</span>
             </div>
           </div>
           <div class="col-lg-3 footer_nav">
@@ -611,7 +673,9 @@
     integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="/static/scripts/main.js"></script>
+  <script src="/static/scripts/animation.js"></script>
   <script src="/static/scripts/calculater.js"></script>
   <script src="/static/scripts/slider.js"></script>
 </body>

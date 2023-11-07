@@ -18,8 +18,7 @@
 /* анимация дисплея фотообоев */
 
 .display-two .button-file {
-    transition: all 1s;
-    animation: up-button .7s ease-in-out forwards;
+    animation: up-button .5s ease-in-out forwards;
 }
 
 @keyframes up-button {
@@ -33,9 +32,8 @@
 }
 
 .display-two .display-text {
-    transition: all .5s;
     text-align: center;
-    animation: up-text .7s ease-in-out forwards;
+    animation: up-text .5s ease-in-out forwards;
 }
 
 @keyframes up-text {
@@ -49,31 +47,27 @@
 
     100% {
         text-align: left;
-        margin-right: auto;
+        margin-right: 120px;
         max-width: 230px;
-        transform: translateY(-200%);
+        transform: translateY(-100%);
     }
 }
 
 .display-two .display-img {
-    transition: all .5s;
-    animation: up-img .7s ease forwards;
+    animation: up-img .5s ease forwards;
 }
 
 @keyframes up-img {
     0% {
-        transform: translateY(100%);
         width: 200px;
         height: 200px;
     }
 
-    
 
     100% {
-        margin-left: auto;
         width: 25%;
         height: 25%;
-        transform: translateY(-30%);
+        transform: translateX(150%) translateY(1%);;
     }
 }
 
@@ -81,8 +75,7 @@
 /* no-mebel */
 
 .display-one .button-file {
-    transition: all .5s;
-    animation: up-buttonOne .7s ease-in-out forwards;
+    animation: up-buttonOne .5s ease-in-out forwards;
 }
 
 @keyframes up-buttonOne {
@@ -96,8 +89,7 @@
 }
 
 .display-one .display-text {
-    transition: all 1s;
-    animation: up-textOne .7s ease-in-out forwards;
+    animation: up-textOne .5s ease-in-out forwards;
 }
 
 @keyframes up-textOne {
@@ -108,19 +100,17 @@
 
     100% {
         text-align: center;
-        transform: translateY(-20%);
+        transform: translateY(0%);
     }
 }
 
 .display-one .display-img {
-    transition: all 1s;
-    animation: up-imgOne 1s ease-in-out forwards;
+    animation: up-imgOne .5s ease-in-out forwards;
 }
 
 @keyframes up-imgOne {
     0% {
-        transform: translateY(-30%);
-        margin-left: auto;
+        transform: translateX(110%);
         width: 96px;
         height: 96px;
     }
@@ -129,8 +119,8 @@
     100% {
         width: 200px;
         height: 200px;
-        transform: translateY(-10%);
-        transition: all 1s;
+        transform: translateX(0%);
+        transition: all .5s;
     }
 }
 
@@ -169,3 +159,21 @@
 }
 
 /*  */
+
+.d-none{
+    display: none;
+    transition: all .5s ease-in;
+}
+
+
+
+/* slider */
+
+
+.slide-unactive{
+    transform: translateY(423px);
+}
+
+.slide-active{
+    transform: translateY(-429px);
+}
