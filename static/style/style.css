@@ -308,11 +308,14 @@ h4 {
 
 .display_calculater {
 	background-color: #EFEAE9;
-	height: 570px;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	padding: 40px 0;
+    height: 570px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding: 40px 0;
 }
 
 .btn {

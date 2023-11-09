@@ -253,3 +253,16 @@ getCheck = () => {
     }
 }
 
+// image
+
+const image_input = document.querySelector('#imageInput');
+let uploaded_img = "";
+
+image_input.addEventListener('change', (event) =>{
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+        uploaded_img = reader.result;
+        document.querySelector(".display_calculater").style.backgroundImage = `url(${uploaded_img})`;
+    });
+    reader.readAsDataURL(event.target.files[0]);
+})
