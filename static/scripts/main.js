@@ -39,3 +39,4 @@ burgerMenu = () =>{
 burgerBtn.addEventListener('click', () => {
     burgerMenu();
 })
+

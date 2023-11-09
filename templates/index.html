@@ -23,7 +23,7 @@
       </div>
       <div class="header_contact d-flex">
         <div class="header_phone">
-          <h4>+7 (495) 970-04-30</h4>
+          <a href="#"><h4>+7 (495) 970-04-30</h4></a>
         </div>
         <div class="header_email">
           <a href="#">oboi@usexpo.ru</a>
@@ -31,17 +31,17 @@
       </div>
       <nav class="header_navigation">
         <ul class="nav_list">
-          <a href="#" class="nav_list-link">
+          <a href="#catalog" class="nav_list-link">
             <li class="nav-item">
               Каталог
             </li>
           </a>
-          <a href="#" class="nav_list-link">
+          <a href="#gallery" class="nav_list-link">
             <li class="nav-item">
               Галлерея работ
             </li>
           </a>
-          <a href="#" class="nav_list-link">
+          <a href="#contact" class="nav_list-link">
             <li class="nav-item">
               Контактная информация
             </li>
@@ -96,15 +96,15 @@
   </header>
 
 
-  <div class="popup-container d-none">
-    <form method="post" class="popup popup-order">
+  <form onsubmit="post_form(this); return false" class="popup-container d-none" method="POST">
+    <div class="popup popup-order">
+      <div class="btn-closed">
+        <img src="/static/media/svg/closed.svg" alt="closed">
+      </div>
       <div class="popup_inner d-flex flex-column">
         <h3 class="registration_popup-title">
           Оставьте ваши контактные данные
         </h3>
-        <div class="btn-closed">
-          <img src="/static/media/svg/closed.svg" alt="closed">
-        </div>
         <div class="registration_form-content d-flex flex-column">
           <div class="registration_form-input">
             <label for="registName">Имя</label>
@@ -122,7 +122,7 @@
           </div>
         </div>
         <div class="registration_form-submit d-flex flex-column">
-          <input type="submit" value="ОФОРМИТЬ ЗАКАЗ" class="btn form-submit-popup">
+          <input type="submit" value="ОФОРМИТЬ ЗАКАЗ" class="btn form-submit-popup form-submit" id="btn-popup">
           <div class="registration_agree add-order_item">
             <input id="popupAgree" type="radio" name="registration" value="agree" class="custom-radio" required>
             <label for="popupAgree" class="add-order_label">
@@ -139,8 +139,12 @@
           </div>
         </div>
       </div>
-    </form>
-  </div>
+      <div class="calculator-registration-mobail d-flex flex-column mt-5 d-none">
+        <h3>Спасибо за заявку!</h3>
+        <h4>Наши менеджеры вскоре свяжутся с вами для уточнения деталей</h4>
+      </div>
+    </div>
+  </form>
   <main>
     <section class="main_slider">
       <div class="swiper headerSwiper">
@@ -194,7 +198,7 @@
       </div>
     </section>
 
-    <section class="ready-solutions">
+    <section class="ready-solutions" id="catalog">
       <div class="container">
         <div class="ready-solutions-top row col-lg-12">
           <h2 class="ready_title">
@@ -285,18 +289,23 @@
 
               <div class="display_radio_btn">
                 <input id="hallFurniture" type="radio" name="radioDis" value="3" class="radio_furniture">
-                <label for="hallFurniture" class="button-colculator btn">Зал</label>
+                <label for="hallFurniture" class="button-colculator btn">Детская</label>
               </div>
 
               <div class="display_radio_btn">
                 <input id="bedroomFurniture" type="radio" name="radioDis" value="4" class="radio_furniture">
                 <label for="bedroomFurniture" class="button-colculator btn">Спальня</label>
               </div>
+
+              <div class="display_radio_btn">
+                <input id="livingFurniture" type="radio" name="radioDis" value="4" class="radio_furniture">
+                <label for="livingFurniture" class="button-colculator btn">Гостинная</label>
+              </div>
             </div>
           </div>
 
           <div class="account_calculator col-lg-5 offset-lg-1">
-            <form class="account_calculator-form ">
+            <form onsubmit="post_form(this); return false" class="account_calculator-form ">
               <div class="account_calculater-info">
                 <div class="account_item-one">
                   <h4 class="medium">Размер стены:</h4>
@@ -339,35 +348,177 @@
                     <div class="account_display-texture">
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural1" type="radio" name="radio-item" value="215"
+                          <input id="display-textural1" type="radio" name="radio-item" value="1599"
                             class="texture-item-input" checked>
                           <label for="display-textural1" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
-                              <h4>Блюбэк</h4>
+                              <h4>Штукатурка</h4>
                               <span>Цветопередача</span>
                             </div>
                           </label>
                           <div class="label-container-two">
-                            <span>650 ₽/М²</span>
-                            <p class="account_price">215 ₽/М²</p>
+                            <p class="account_price">1599₽/М²</p>
                           </div>
                         </div>
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural2" type="radio" name="radio-item" value="844"
+                          <input id="display-textural2" type="radio" name="radio-item" value="1599"
                             class="texture-item-input">
                           <label for="display-textural2" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
-                              <h4>Блк</h4>
+                              <h4>Холст</h4>
                               <span>Цветопередача</span>
                             </div>
                           </label>
                           <div class="label-container-two">
-                            <span>650 ₽/М²</span>
-                            <p class="account_price">844 ₽/М²</p>
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="display-textural3" type="radio" name="radio-item" value="1599"
+                            class="texture-item-input">
+                          <label for="display-textural3" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Пыль</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="display-textural4" type="radio" name="radio-item" value="1599"
+                            class="texture-item-input">
+                          <label for="display-textural4" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Песок</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="display-textural5" type="radio" name="radio-item" value="1599"
+                            class="texture-item-input">
+                          <label for="display-textural5" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Мелкий лен</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="display-textural7" type="radio" name="radio-item" value="1599"
+                            class="texture-item-input">
+                          <label for="display-textural7" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Лоск</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="display-textural8" type="radio" name="radio-item" value="1599"
+                            class="texture-item-input">
+                          <label for="display-textural8" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Иней</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="display-textural9" type="radio" name="radio-item" value="1599"
+                            class="texture-item-input">
+                          <label for="display-textural9" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Живопись</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="display-textural10" type="radio" name="radio-item" value="1599"
+                            class="texture-item-input">
+                          <label for="display-textural10" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Декоративная штукатурка</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="display-textural11" type="radio" name="radio-item" value="1599"
+                            class="texture-item-input">
+                          <label for="display-textural11" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Smart Stick</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="display-textural12" type="radio" name="radio-item" value="1599"
+                            class="texture-item-input">
+                          <label for="display-textural12" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Pintura</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
                           </div>
                         </div>
                       </div>
@@ -461,22 +612,22 @@
                   <h4 class="add-order_title medium">Добавить к заказу:</h4>
                   <div class="add-order_container">
                     <div class="add-order_item add-order_checkbox">
-                      <input id="addItemOne" type="checkbox" name="add-item-1" value="200"
+                      <input id="addItemOne" type="checkbox" name="add-item-1" value="299"
                         class="custom-checkbox add-order_input">
                       <label for="addItemOne" class="add-order_label">
                         <div class="label-container">
                           <h4>Латексная печать</h4>
-                          <span class="add-order_price">200 ₽/М²</span>
+                          <span class="add-order_price">299 ₽/М²</span>
                         </div>
                       </label>
                     </div>
                     <div class="add-order_item add-order_checkbox">
-                      <input id="addItemTwo" type="checkbox" name="add-item-2" value="350"
+                      <input id="addItemTwo" type="checkbox" name="add-item-2" value="59"
                         class="custom-checkbox add-order_input">
                       <label for="addItemTwo" class="add-order_label">
                         <div class="label-container">
                           <h4>Добавить клей</h4>
-                          <span class="add-order_price">350 ₽</span>
+                          <span class="add-order_price">59 ₽</span>
                         </div>
                       </label>
                     </div>
@@ -501,15 +652,15 @@
                   <div class="order-result-info">
                     <h4 class="order-result_title medium">Текущая стоимость заказа</h4>
                     <p class="order-result-price medium" data-result="">
-                      215₽
+                      1599₽
                     </p>
                     <span>Минимальная стоимость заказа 2000 руб.</span>
                   </div>
                   <div class="order-step-two">ШАГ 2</div>
                 </div>
               </div>
-
-              <div class="account_calculator-registration d-none">
+            </form>
+              <form onsubmit="post_form(this); return false" class="account_calculator-registration d-none">
                 <div class="account_buttin-back">
                   <span class="account_buttin-back-item"> &lt; Назад</span>
                 </div>
@@ -551,7 +702,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </form >
               <div class="calculator-registration-completed d-flex flex-column mt-5 d-none">
                 <h3>Спасибо за заявку!</h3>
                 <h4>Наши менеджеры вскоре свяжутся с вами для уточнения деталей</h4>
@@ -575,7 +726,7 @@
         </div>
       </div>
     </section>
-    <section class="best-works">
+    <section class="best-works" id="gallery">
       <div class="container">
         <div class="best-works_inner row">
           <div class="best-works_info col-lg-5">
@@ -607,15 +758,15 @@
         </div>
       </div>
     </section>
-    <section class="map">
-      <div style="position:relative;overflow:hidden;"><a
+    <section class="map" >
+      <div style="position:relative;overflow:hidden;" id="map-wrap"><a
           href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps"
           style="color:#eee;font-size:12px;position:absolute;top:0px;">Москва</a><a
           href="https://yandex.ru/maps/213/moscow/geo/kozhevnicheskaya_ulitsa/10049526/?ll=37.645823%2C55.729735&utm_medium=mapframe&utm_source=maps&z=18.35"
           style="color:#eee;font-size:12px;position:absolute;top:14px;">Кожевническая улица — Яндекс Карты</a><iframe
           src="https://yandex.ru/map-widget/v1/?ll=37.645823%2C55.729735&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCggxMDA0OTUyNhJB0KDQvtGB0YHQuNGPLCDQnNC-0YHQutCy0LAsINCa0L7QttC10LLQvdC40YfQtdGB0LrQsNGPINGD0LvQuNGG0LAiCg29lBZCFT3rXkI%2C&z=18.35"
-          width="100%" height="748" frameborder="1" allowfullscreen="true"
-          style="position:relative; pointer-events: none;"></iframe></div>
+          width="100%" height="748" frameborder="1" allowfullscreen="true" 
+          style="position:relative;"></iframe></div>
     </section>
   </main>
   <footer class="footer">
@@ -637,7 +788,7 @@
               <a href="#">oboi@usexpo.ru</a>
             </div>
             <div class="footer_phone">
-              <span>+7 (495) 970-04-30</span>
+              <a href="#"><span>+7 (495) 970-04-30</span></a>
             </div>
           </div>
           <div class="col-lg-3 footer_nav">
@@ -675,6 +826,7 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="/static/scripts/main.js"></script>
+  <script src="/static/scripts/record.js"></script>
   <script src="/static/scripts/animation.js"></script>
   <script src="/static/scripts/calculater.js"></script>
   <script src="/static/scripts/slider.js"></script>
