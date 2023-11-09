@@ -24,6 +24,20 @@ function furnitureSelection() {
                     displayMain.classList.remove("display-one");
                     displayImg.src = '/static/media/png/Interior_02.png';
                 }
+                if(button.id === "bedroomFurniture"){
+                    displayTop.classList.remove("d-opasity");
+                    displayTop.classList.add("d-opasity-1");
+                    displayMain.classList.add("display-two");
+                    displayMain.classList.remove("display-one");
+                    displayImg.src = '/static/media/png/Interior_03.png';
+                }
+                if(button.id === "livingFurniture"){
+                    displayTop.classList.remove("d-opasity");
+                    displayTop.classList.add("d-opasity-1");
+                    displayMain.classList.add("display-two");
+                    displayMain.classList.remove("display-one");
+                    displayImg.src = '/static/media/png/Interior_04.png';
+                }
                 if (button.id === "noFurniture") {
                     displayTop.classList.add("d-opasity");
                     displayTop.classList.remove("d-opasity-1");
@@ -194,7 +208,7 @@ calculationMaterial = () => {
     }
 
     if (addItem2.checked) {
-        let addPrice2 = Number(addItem2.value);
+        let addPrice2 = calculateService(addItem2, size);
         resultPrice = resultM + addPrice2;
         resultM += addPrice2;
     }
@@ -239,3 +253,16 @@ getCheck = () => {
     }
 }
 
+// image
+
+const image_input = document.querySelector('#imageInput');
+let uploaded_img = "";
+
+image_input.addEventListener('change', (event) =>{
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+        uploaded_img = reader.result;
+        document.querySelector(".display_calculater").style.backgroundImage = `url(${uploaded_img})`;
+    });
+    reader.readAsDataURL(event.target.files[0]);
+})
