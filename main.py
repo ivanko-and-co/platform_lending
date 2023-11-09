@@ -1,5 +1,6 @@
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from hashlib import sha256
 
 from flask import Flask, render_template, jsonify, request
 import smtplib
@@ -22,7 +23,16 @@ def form_record():
 
 @app.route('/order', methods=['POST'])
 def form_order():
-    ...
+    sum_cart = request.form['sum']
+    client_id = ''
+    order_id = ''
+    service_name = ''
+    client_phone = request.form['phone']
+    client_email = request.form['email']
+
+    sign = sha256(sum_cart + client_id + order_id + service_name + client_phone + client_email)
+
+    return sign
 
 
 def send_mail(data, mime='plain', subject='Заказ на сайте', email=app.config['email']):
