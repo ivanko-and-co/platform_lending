@@ -68,4 +68,4 @@ def send_mail(data, mime='plain', subject='Заказ на сайте', email=ap
         smtp.quit()
 
 
-app.run(debug=True)
+app.run(host="0.0.0.0", debug=True)
