@@ -1,42 +1,33 @@
 
+
 function furnitureSelection() {
+    let furnitureFon = new Map([
+        ['officeFurniture', '/static/media/png/Interior_01.png'],
+        ['hallFurniture', '/static/media/png/Interior_02.png'],
+        ['bedroomFurniture', '/static/media/png/Interior_04.png'],
+        ['livingFurniture', '/static/media/png/Interior_03.png'],
+        ['livingFurniture2', '/static/media/png/Interior_05.png'],
+        ['kitchenFurniture', '/static/media/png/Interior_06.png'],
+        ['kitchenFurniture2', '/static/media/png/Interior_07.png']
+    ]);
+
     let displayButtons = document.querySelectorAll(".radio_furniture");
     let displayMain = document.querySelector(".display");
     let displayTop = document.querySelector(".display-top");
     let displayImg = document.querySelector(".display-furniture");
-    displayButtons.forEach(button => {
+    displayTop.classList.add("d-opasity");
 
-        displayTop.classList.add("d-opasity");
 
-        button.addEventListener('click', () => {
+    displayButtons.forEach((button) => {
+        furnitureFon.forEach((value,key) =>{
+            button.addEventListener('click', () => {
             if (button.checked) {
-                if (button.id === "officeFurniture") {
+                if (button.id === key) {
                     displayTop.classList.remove("d-opasity");
                     displayTop.classList.add("d-opasity-1");
                     displayMain.classList.add("display-two");
                     displayMain.classList.remove("display-one");
-                    displayImg.src = '/static/media/png/Interior_01.png';
-                }
-                if(button.id === "hallFurniture"){
-                    displayTop.classList.remove("d-opasity");
-                    displayTop.classList.add("d-opasity-1");
-                    displayMain.classList.add("display-two");
-                    displayMain.classList.remove("display-one");
-                    displayImg.src = '/static/media/png/Interior_02.png';
-                }
-                if(button.id === "bedroomFurniture"){
-                    displayTop.classList.remove("d-opasity");
-                    displayTop.classList.add("d-opasity-1");
-                    displayMain.classList.add("display-two");
-                    displayMain.classList.remove("display-one");
-                    displayImg.src = '/static/media/png/Interior_03.png';
-                }
-                if(button.id === "livingFurniture"){
-                    displayTop.classList.remove("d-opasity");
-                    displayTop.classList.add("d-opasity-1");
-                    displayMain.classList.add("display-two");
-                    displayMain.classList.remove("display-one");
-                    displayImg.src = '/static/media/png/Interior_04.png';
+                    displayImg.src = value;
                 }
                 if (button.id === "noFurniture") {
                     displayTop.classList.add("d-opasity");
@@ -46,6 +37,8 @@ function furnitureSelection() {
                 }
             }
         })
+        })
+        
     })
 }
 
@@ -248,7 +241,7 @@ getCheck = () => {
             let itemPrice = Number(item.value);
             resultPrice = size * itemPrice;
         }
-    
+
         updateTotalPrice();
     }
 }
@@ -258,7 +251,7 @@ getCheck = () => {
 const image_input = document.querySelector('#imageInput');
 let uploaded_img = "";
 
-image_input.addEventListener('change', (event) =>{
+image_input.addEventListener('change', (event) => {
     const reader = new FileReader();
     reader.addEventListener('load', () => {
         uploaded_img = reader.result;
