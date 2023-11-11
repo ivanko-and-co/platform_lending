@@ -1,7 +1,7 @@
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from hashlib import sha256
-from typing import NamedTuple
+from typing import TypedDict
 
 import requests
 from flask import Flask, render_template, jsonify, request, url_for
@@ -45,7 +45,7 @@ CATEGORY = {
 }
 
 
-class PayloadData(NamedTuple):
+class PayloadData(TypedDict):
     sum: int
     client_email: str
     client_phone: str
@@ -143,4 +143,4 @@ def send_mail(data, mime='plain', subject='Заказ на сайте', email=ap
         smtp.quit()
 
 
-app.run(host="0.0.0.0", debug=True)
+app.run(host="0.0.0.0", debug=False)
