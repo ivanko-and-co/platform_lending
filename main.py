@@ -101,7 +101,7 @@ def form_order():
         sum=int(request.args['sum']),
         client_email=request.args['client_email'],
         client_phone=request.args['client_phone'],
-        sign=sha256(request.args['sum'].encode('utf-8') + '' + '' + '' + request.args['client_phone'].encode('utf-8') + request.args['client_email'].encode('utf-8')),
+        sign=sha256(request.args['sum'].encode('utf-8') + ''.encode('utf-8') + ''.encode('utf-8') + ''.encode('utf-8') + request.args['client_phone'].encode('utf-8') + request.args['client_email'].encode('utf-8')),
         user_result_callback=url_for('callback'),
     )
 
