@@ -22,7 +22,7 @@ $('.btn-frescoes').on('click', () => {
 
 
 
-// line menu
+// slider
 
 const slides = document.querySelectorAll('.slide');
 let currentSlide = 2; 
@@ -51,3 +51,20 @@ function nextSlide() {
 setInterval(nextSlide, 3000);
 
 
+// line menu
+
+document.addEventListener('DOMContentLoaded', () => {
+  let activeLabel = document.querySelector('.account_texture input:checked + label');
+  let line = document.getElementById('line');
+  line.style.left = activeLabel.offsetLeft + 'px';
+  line.style.width = activeLabel.offsetWidth + 'px';
+  
+  let radioButtons = document.querySelectorAll('.radio_account');
+  radioButtons.forEach((radioButton) => {
+    radioButton.addEventListener('change', function() {
+      let selectedLabel = this.nextElementSibling;
+      line.style.left = selectedLabel.offsetLeft + 'px';
+      line.style.width = selectedLabel.offsetWidth + 'px';
+    });
+  });
+});

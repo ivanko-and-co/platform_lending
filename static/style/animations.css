@@ -124,6 +124,7 @@
     }
 }
 
+
 @media (max-width: 600px) {
 	@keyframes up-img {
         0% {
@@ -136,7 +137,7 @@
             margin-left: auto;
             width: 96px;
             height: 96px;
-            transform: translateY(-10%);
+            transform: translateY(-40%);
         }
     }
 
@@ -153,7 +154,17 @@
             text-align: left;
             margin-right: 100px;
             max-width: 230px;
-            transform: translateY(-160%);
+            transform: translateY(-140%);
+        }
+    }
+
+    @keyframes up-button {
+        0% {
+            transform: translateY(100%);
+        }
+    
+        100% {
+            transform: translateY(-570%);
         }
     }
 }

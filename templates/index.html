@@ -23,10 +23,12 @@
       </div>
       <div class="header_contact d-flex">
         <div class="header_phone">
-          <a href="#"><h4>+7 (495) 970-04-30</h4></a>
+          <a href="tel:+74959700430">
+            <h4>+7 (495) 970-04-30</h4>
+          </a>
         </div>
         <div class="header_email">
-          <a href="#">oboi@usexpo.ru</a>
+          <a href="mailto:oboi@usexpo.ru">oboi@usexpo.ru</a>
         </div>
       </div>
       <nav class="header_navigation">
@@ -65,25 +67,27 @@
         </div>
         <div class="header_contact d-flex">
           <div class="header_phone">
-            <h4>+7 (495) 970-04-30</h4>
+            <a href="tel:+74959700430">
+              <h4>+7 (495) 970-04-30</h4>
+            </a>
           </div>
           <div class="header_email">
-            <a href="#">oboi@usexpo.ru</a>
+            <a href="mailto:oboi@usexpo.ru">oboi@usexpo.ru</a>
           </div>
         </div>
         <nav class="header_navigation">
           <ul class="nav_list">
-            <a href="#" class="nav_list-link">
+            <a href="#catalog" class="nav_list-link">
               <li class="nav-item">
                 Каталог
               </li>
             </a>
-            <a href="#" class="nav_list-link">
+            <a href="#gallery" class="nav_list-link">
               <li class="nav-item">
                 Галлерея работ
               </li>
             </a>
-            <a href="#" class="nav_list-link">
+            <a href="#contact" class="nav_list-link">
               <li class="nav-item">
                 Контактная информация
               </li>
@@ -265,9 +269,9 @@
                   </div>
                   <p class="display-text">
                     Формат загружаемого файла: jpeg, gif или png, максимальный размер — 15 Mb
-                      <a href="#" class="file-link display-file">
-                        Тех характеристики файла для печати
-                      </a>
+                    <a href="#" class="file-link display-file">
+                      Тех характеристики файла для печати
+                    </a>
                   </p>
                   <div class="button-file d-flex flex-column">
                     <input type="file" name="file" id="imageInput" accept="image/jpeg, image/png, image/jpg">
@@ -300,6 +304,18 @@
               <div class="display_radio_btn">
                 <input id="livingFurniture" type="radio" name="radioDis" value="4" class="radio_furniture">
                 <label for="livingFurniture" class="button-colculator btn">Гостинная</label>
+              </div>
+              <div class="display_radio_btn">
+                <input id="livingFurniture2" type="radio" name="radioDis" value="5" class="radio_furniture">
+                <label for="livingFurniture2" class="button-colculator btn">Гостинная-2</label>
+              </div>
+              <div class="display_radio_btn">
+                <input id="kitchenFurniture" type="radio" name="radioDis" value="6" class="radio_furniture">
+                <label for="kitchenFurniture" class="button-colculator btn">Кухня</label>
+              </div>
+              <div class="display_radio_btn">
+                <input id="kitchenFurniture2" type="radio" name="radioDis" value="7" class="radio_furniture">
+                <label for="kitchenFurniture2" class="button-colculator btn">Кухня-2</label>
               </div>
             </div>
           </div>
@@ -342,7 +358,7 @@
                       <input id="frescoes" type="radio" name="radioTex" value="frescoes" class="radio_account">
                       <label for="frescoes" class="button-account">Виниловые фотообои</label>
                     </div>
-                    <div class="line"></div>
+                    <div id="line"></div>
                   </div>
                   <div class="account_display" style="height: 146px;">
                     <div class="account_display-texture">
@@ -900,7 +916,7 @@
                       <label for="addItemTwo" class="add-order_label">
                         <div class="label-container">
                           <h4>Добавить клей</h4>
-                          <span class="add-order_price">59 ₽</span>
+                          <span class="add-order_price">59 ₽/М²</span>
                         </div>
                       </label>
                     </div>
@@ -925,7 +941,7 @@
                   <div class="order-result-info">
                     <h4 class="order-result_title medium">Текущая стоимость заказа</h4>
                     <p class="order-result-price medium" data-result="">
-                      1599₽
+                      1 599₽
                     </p>
                     <span>Минимальная стоимость заказа 2000 руб.</span>
                   </div>
@@ -933,53 +949,53 @@
                 </div>
               </div>
             </form>
-              <form onsubmit="post_form(this); return false" class="account_calculator-registration d-none">
-                <div class="account_buttin-back">
-                  <span class="account_buttin-back-item"> &lt; Назад</span>
-                </div>
-                <div class="account_registration-form d-flex flex-column">
-                  <h3 class="registration_form-title">
-                    Оставьте ваши контактные данные
-                  </h3>
-                  <div class="registration_form-content d-flex flex-column">
-                    <div class="registration_form-input">
-                      <label for="registName">Имя</label>
-                      <input id="registName" type="text" placeholder="Ваше имя" required>
-                    </div>
-                    <div class="registration_form-input">
-                      <label for="registPhone">Телефон</label>
-                      <input id="registPhone" type="tel" pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}"
-                        placeholder="+7 (___)" required>
-                    </div>
-                    <div class="registration_form-input">
-                      <label for="registEmail">E-mail</label>
-                      <input id="registEmail" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                        placeholder="Ваша почта" required>
-                    </div>
-                  </div>
-                  <div class="registration_form-submit d-flex flex-column">
-                    <input type="submit" value="ОФОРМИТЬ ЗАКАЗ" class="form-submit">
-                    <div class="registration_agree add-order_item">
-                      <input id="regAgree" type="radio" name="registration" value="agree" class="custom-radio" required>
-                      <label for="regAgree" class="add-order_label">
-                        <div class="label-container">
-                          <p>
-                            Отправляя сведения, я даю свое согласие на обработку моих персональных данных в соответствии
-                            с
-                            законом №152-ФЗ «О персональных данных» от 27.07.2006, ознакомился и принимаю условия
-                            <a href="#">Пользовательского соглашения</a>, <a href="#">Политики конфиденциальности</a> и
-                            <a href="#">Договора оферты</a>.
-                          </p>
-                        </div>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </form >
-              <div class="calculator-registration-completed d-flex flex-column mt-5 d-none">
-                <h3>Спасибо за заявку!</h3>
-                <h4>Наши менеджеры вскоре свяжутся с вами для уточнения деталей</h4>
+            <form onsubmit="post_form(this); return false" class="account_calculator-registration d-none">
+              <div class="account_buttin-back">
+                <span class="account_buttin-back-item"> &lt; Назад</span>
               </div>
+              <div class="account_registration-form d-flex flex-column">
+                <h3 class="registration_form-title">
+                  Оставьте ваши контактные данные
+                </h3>
+                <div class="registration_form-content d-flex flex-column">
+                  <div class="registration_form-input">
+                    <label for="registName">Имя</label>
+                    <input id="registName" type="text" placeholder="Ваше имя" required>
+                  </div>
+                  <div class="registration_form-input">
+                    <label for="registPhone">Телефон</label>
+                    <input id="registPhone" type="tel" pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}"
+                      placeholder="+7 (___)" required>
+                  </div>
+                  <div class="registration_form-input">
+                    <label for="registEmail">E-mail</label>
+                    <input id="registEmail" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                      placeholder="Ваша почта" required>
+                  </div>
+                </div>
+                <div class="registration_form-submit d-flex flex-column">
+                  <input type="submit" value="ОФОРМИТЬ ЗАКАЗ" class="form-submit">
+                  <div class="registration_agree add-order_item">
+                    <input id="regAgree" type="radio" name="registration" value="agree" class="custom-radio" required>
+                    <label for="regAgree" class="add-order_label">
+                      <div class="label-container">
+                        <p>
+                          Отправляя сведения, я даю свое согласие на обработку моих персональных данных в соответствии
+                          с
+                          законом №152-ФЗ «О персональных данных» от 27.07.2006, ознакомился и принимаю условия
+                          <a href="#">Пользовательского соглашения</a>, <a href="#">Политики конфиденциальности</a> и
+                          <a href="#">Договора оферты</a>.
+                        </p>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="calculator-registration-completed d-flex flex-column mt-5 d-none">
+              <h3>Спасибо за заявку!</h3>
+              <h4>Наши менеджеры вскоре свяжутся с вами для уточнения деталей</h4>
+            </div>
             </form>
           </div>
         </div>
@@ -1031,15 +1047,14 @@
         </div>
       </div>
     </section>
-    <section class="map" >
+    <section class="map" id="contact">
       <div style="position:relative;overflow:hidden;" id="map-wrap"><a
           href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps"
           style="color:#eee;font-size:12px;position:absolute;top:0px;">Москва</a><a
           href="https://yandex.ru/maps/213/moscow/geo/kozhevnicheskaya_ulitsa/10049526/?ll=37.645823%2C55.729735&utm_medium=mapframe&utm_source=maps&z=18.35"
           style="color:#eee;font-size:12px;position:absolute;top:14px;">Кожевническая улица — Яндекс Карты</a><iframe
           src="https://yandex.ru/map-widget/v1/?ll=37.645823%2C55.729735&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCggxMDA0OTUyNhJB0KDQvtGB0YHQuNGPLCDQnNC-0YHQutCy0LAsINCa0L7QttC10LLQvdC40YfQtdGB0LrQsNGPINGD0LvQuNGG0LAiCg29lBZCFT3rXkI%2C&z=18.35"
-          width="100%" height="748" frameborder="1" allowfullscreen="true" 
-          style="position:relative;"></iframe></div>
+          width="100%" height="748" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
     </section>
   </main>
   <footer class="footer">
@@ -1051,17 +1066,19 @@
               <img src="/static/media/svg/logo.svg" alt="logo">
             </div>
             <div class="footer_streat">
-              <span>
-                Павелецкая площадь, 1А, стр. 1, офис 9, Россия, Москва
-              </span>
+              <a href="https://yandex.ru/maps/-/CDeqFL20">
+                <span>
+                  Павелецкая площадь, 1А, стр. 1, офис 9, Россия, Москва
+                </span>
+              </a>
             </div>
           </div>
           <div class="col-lg-2 footer_contact d-flex flex-column">
             <div class="footer_email">
-              <a href="#">oboi@usexpo.ru</a>
+              <a href="mailto:oboi@usexpo.ru">oboi@usexpo.ru</a>
             </div>
             <div class="footer_phone">
-              <a href="#"><span>+7 (495) 970-04-30</span></a>
+              <a href="tel:+74959700430"><span>+7 (495) 970-04-30</span></a>
             </div>
           </div>
           <div class="col-lg-3 footer_nav">
