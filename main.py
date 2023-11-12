@@ -103,11 +103,11 @@ def form_order():
     order_id = ''.join(choices(ascii_letters + '1234567890', k=5))
 
     file = 'Файл отсутствует'
-    if 'file' in request.files:
-        ext = secure_filename(request.files['file'].filename).split('.')[1]
-        request.files['file'].filename = order_id + '.' + ext
-        request.files['file'].save(os.path.join('static', 'user_file'))
-        file = url_for('get_file', file='')
+    # if 'file' in request.files:
+    #     ext = secure_filename(request.files['file'].filename).split('.')[1]
+    #     request.files['file'].filename = order_id + '.' + ext
+    #     request.files['file'].save(os.path.join('static', 'user_file'))
+    #     file = url_for('get_file', file='')
 
     price = product['price_size']
     extra_str = ''
@@ -121,7 +121,7 @@ def form_order():
     message = f'Заказ\nИмя: {request.form["name"]}\nТелефон: {phone}\nEmail: {email}\n'
     message += f'Заказ № {order_id}\n    Категория: {category}\n    Товар: {product["name"]}\n'
     message += f'    Допы:{extra_str}\n    Сумма: {sum}\n    Файл: {file}'
-    redis.set(name=order_id, value=message, ex=3600)
+    # redis.set(name=order_id, value=message, ex=3600)
 
 
     sign = sha256(
@@ -133,7 +133,7 @@ def form_order():
         client_email=email,
         client_phone=phone,
         sign=sign,
-        user_result_callback=url_for('callback')
+        # user_result_callback=url_for('callback', order_id=order_id)
     )
 
     result = requests.post('https://oboi-usexpo.server.paykeeper.ru/create/', data=data)
