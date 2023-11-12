@@ -1,12 +1,19 @@
+import os.path
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from hashlib import sha256
 from typing import TypedDict
+import json
+from string import ascii_letters
+from random import choices
 
 import requests
-from flask import Flask, render_template, jsonify, request, url_for
+from flask import Flask, render_template, jsonify, request, url_for, redirect
+from werkzeug.utils import secure_filename
 import smtplib
+from redis import Redis
 
+redis = Redis(decode_responses=True)
 app = Flask(__name__)
 app.config['email'] = 'oboi@usexpo.ru'
 
@@ -47,6 +54,7 @@ CATEGORY = {
 
 class PayloadData(TypedDict):
     sum: int
+    orderid: str
     client_email: str
     client_phone: str
     sign: str
@@ -65,19 +73,14 @@ def form_record():
     return jsonify(True)
 
 
-@app.route('/callback_url')
-def callback():
-    try:
-        app.config['result'] = {
-            'payment_id': request.args['payment_id'],
-            'clientid': request.args['clientid'],
-            'result': request.args['result']
-        }
-    except Exception as e:
-        app.config['result'] = {
-            'result': str(e)
-        }
-    return jsonify(True)
+@app.route('/callback_url/<path:order_id>')
+def callback(order_id: str):
+    if request.args['result'] == 'success':
+        if redis.exists(order_id):
+            send_mail(data=redis.get(order_id))
+            redis.delete(order_id)
+
+    return redirect(url_for('main'))
 
 
 @app.route('/callback_view')
@@ -89,20 +92,48 @@ def callback_view():
 
 @app.route('/order')
 def form_order():
-    # data = PayloadData(
-    #     sum=int(request.form['sum']),
-    #     client_email=request.form['email'],
-    #     client_phone=request.form['phone'],
-    #     sign=sha256(request.form['sum'] + '' + '' + '' + request.form['phone'] + request.form['email']),
-    #     user_result_callback=url_for('callback')
-    # )
+    width: int = int(request.form['width'])
+    height: int = int(request.form['height'])
+    product: dict = PRODUCT[int(request.form['product_id'])]
+    category: str = CATEGORY[int(request.form['category_id'])]
+    extra: list[int] = json.loads(request.form['extra'])
+    email = request.form['email']
+    phone = request.form['phone']
+
+    order_id = ''.join(choices(ascii_letters + '1234567890', k=5))
+
+    file = 'Файл отсутствует'
+    if 'file' in request.files:
+        ext = secure_filename(request.files['file'].filename).split('.')[1]
+        request.files['file'].filename = order_id + '.' + ext
+        request.files['file'].save(os.path.join('static', 'user_file'))
+        file = url_for('get_file', file='')
+
+    price = product['price_size']
+    extra_str = ''
+    for index in extra:
+        if index in product["EXTRA"]:
+            price += product["EXTRA"][index]['price']
+            extra_str += ' ' + product["EXTRA"][index]['name'] + ','
+
+    sum = ((width * height)/10_000)*price
+
+    message = f'Заказ\nИмя: {request.form["name"]}\nТелефон: {phone}\nEmail: {email}\n'
+    message += f'Заказ № {order_id}\n    Категория: {category}\n    Товар: {product["name"]}\n'
+    message += f'    Допы:{extra_str}\n    Сумма: {sum}\n    Файл: {file}'
+    redis.set(name=order_id, value=message, ex=3600)
+
+
+    sign = sha256(
+        (str(sum) + '' + '' + '' + email + phone).encode('utf-8'))
 
     data = PayloadData(
-        sum=int(request.args['sum']),
-        client_email=request.args['client_email'],
-        client_phone=request.args['client_phone'],
-        sign=sha256(request.args['sum'].encode('utf-8') + ''.encode('utf-8') + ''.encode('utf-8') + ''.encode('utf-8') + request.args['client_phone'].encode('utf-8') + request.args['client_email'].encode('utf-8')),
-        user_result_callback=url_for('callback'),
+        sum=sum,
+        orderid=order_id,
+        client_email=email,
+        client_phone=phone,
+        sign=sign,
+        user_result_callback=url_for('callback')
     )
 
     result = requests.post('https://oboi-usexpo.server.paykeeper.ru/create/', data=data)
