@@ -11,9 +11,9 @@ import requests
 from flask import Flask, render_template, jsonify, request, url_for, redirect
 from werkzeug.utils import secure_filename
 import smtplib
-from redis import Redis
+# from redis import Redis
 
-redis = Redis(decode_responses=True)
+# redis = Redis(decode_responses=True)
 app = Flask(__name__)
 app.config['email'] = 'oboi@usexpo.ru'
 
@@ -90,8 +90,8 @@ def callback_view():
     return jsonify(False)
 
 
-@app.route('/order')
-def form_order():
+@app.route('/order' , methods=['POST']) 
+def form_order(): 
     width: int = int(request.form['width'])
     height: int = int(request.form['height'])
     product: dict = PRODUCT[int(request.form['product_id'])]
@@ -137,7 +137,6 @@ def form_order():
     )
 
     result = requests.post('https://oboi-usexpo.server.paykeeper.ru/create/', data=data)
-
     return result.content
 
 
@@ -174,4 +173,4 @@ def send_mail(data, mime='plain', subject='Заказ на сайте', email=ap
         smtp.quit()
 
 
-app.run(host="0.0.0.0", debug=False)
+app.run(host="0.0.0.0", debug=True)

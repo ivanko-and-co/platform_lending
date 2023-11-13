@@ -321,7 +321,7 @@
           </div>
 
           <div class="account_calculator col-lg-5 offset-lg-1">
-            <form onsubmit="post_form(this); return false" class="account_calculator-form ">
+            <div  class="account_calculator-form ">
               <div class="account_calculater-info">
                 <div class="account_item-one">
                   <h4 class="medium">Размер стены:</h4>
@@ -343,30 +343,50 @@
                 </div>
                 <div class="account_item-two">
                   <h4 class="account_title medium">Материалы для обоев:</h4>
-                  <div class="account_texture">
+                  <div class="account_texture" id="accountTexture">
                     <div class="account_radio_btn btn-textural">
-                      <input id="textural" type="radio" name="radioTex" value="textural" class="radio_account" checked>
-                      <label for="textural" class="button-account">Бумажные обои</label>
+                      <input id="radio_paper" type="radio" name="radioTex" value="paper" class="radio_account" data-id="1" checked>
+                      <label for="radio_paper" class="button-account">Бумажные</label>
                     </div>
 
                     <div class="account_radio_btn btn-smooth">
-                      <input id="smooth" type="radio" name="radioTex" value="smooth" class="radio_account">
-                      <label for="smooth" class="button-account">Тканевые фотообои</label>
+                      <input id="radio_fabric" type="radio" name="radioTex" value="fabric" class="radio_account" data-id="2">
+                      <label for="radio_fabric" class="button-account">Тканевые</label>
                     </div>
 
                     <div class="account_radio_btn btn-frescoes">
-                      <input id="frescoes" type="radio" name="radioTex" value="frescoes" class="radio_account">
-                      <label for="frescoes" class="button-account">Виниловые фотообои</label>
+                      <input id="radio_vinyl" type="radio" name="radioTex" value="vinyl" class="radio_account" data-id="3">
+                      <label for="radio_vinyl" class="button-account">Виниловые</label>
                     </div>
-                    <div id="line"></div>
+
+                    <div class="account_radio_btn btn-frescoes mb-3">
+                      <input id="radio_flizelin-pvh" type="radio" name="radioTex" value="flizelin-pvh" class="radio_account"  data-id="4">
+                      <label for="radio_flizelin-pvh" class="button-account"><span class="span-pvh">(с ПВХ)</span> Флизелиновые</label>
+                    </div>
+
+                    <div class="account_radio_btn btn-frescoes mb-3">
+                      <input id="radio_flizelin" type="radio" name="radioTex" value="flizelin" class="radio_account"  data-id="5">
+                      <label for="radio_flizelin" class="button-account"><span class="span-pvh">(без ПВХ)</span>Флизелиновые</label>
+                    </div>
+
+                    <div class="account_radio_btn btn-frescoes mb-3">
+                      <input id="radio_paper-pvh" type="radio" name="radioTex" value="paper-pvh" class="radio_account"  data-id="6">
+                      <label for="radio_paper-pvh" class="button-account"><span class="span-pvh">(с ПВХ)</span>Бумажные</label>
+                    </div>
+
+                    <div class="account_radio_btn btn-latex mb-3">
+                      <input id="radio_latex" type="radio" name="radioTex" value="latex" class="radio_account"  data-id="7">
+                      <label for="radio_latex" class="button-account"><span class="span-pvh">(без ПВХ)</span>Латексная бумага</label>
+                    </div>
+                    <!-- <div id="line"></div> -->
                   </div>
                   <div class="account_display" style="height: 146px;">
-                    <div class="account_display-texture">
+                    <div class="account_container" id="account_display-paper">
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural1" type="radio" name="radio-item" value="1599"
+                          <input id="paper-plaster" type="radio" name="price-item"  data-latex="299"  data-id="1"  value="1599"
                             class="texture-item-input" checked>
-                          <label for="display-textural1" class="button-account-item d-flex">
+                          <label for="paper-plaster" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Штукатурка</h4>
@@ -380,9 +400,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural2" type="radio" name="radio-item" value="1599"
+                          <input id="paper-сanvas" type="radio" name="price-item"  data-latex="299"  data-id="2"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural2" class="button-account-item d-flex">
+                          <label for="paper-сanvas" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Холст</h4>
@@ -396,9 +416,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural3" type="radio" name="radio-item" value="1599"
+                          <input id="paper-dust" type="radio" name="price-item"  data-latex="299"  data-id="3"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural3" class="button-account-item d-flex">
+                          <label for="paper-dust" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Пыль</h4>
@@ -412,9 +432,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural4" type="radio" name="radio-item" value="1599"
+                          <input id="paper-sand" type="radio" name="price-item"  data-latex="299"  data-id="4"   value="1599"
                             class="texture-item-input">
-                          <label for="display-textural4" class="button-account-item d-flex">
+                          <label for="paper-sand" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Песок</h4>
@@ -428,9 +448,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural5" type="radio" name="radio-item" value="1599"
+                          <input id="paper-small-flax" type="radio" name="price-item"  data-latex="299"  data-id="5"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural5" class="button-account-item d-flex">
+                          <label for="paper-small-flax" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Мелкий лен</h4>
@@ -444,9 +464,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural7" type="radio" name="radio-item" value="1599"
+                          <input id="paper-gloss" type="radio" name="price-item"  data-latex="299"  data-id="6"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural7" class="button-account-item d-flex">
+                          <label for="paper-gloss" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Лоск</h4>
@@ -460,9 +480,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural8" type="radio" name="radio-item" value="1599"
+                          <input id="paper-frost" type="radio" name="price-item"  data-latex="299"  data-id="7"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural8" class="button-account-item d-flex">
+                          <label for="paper-frost" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Иней</h4>
@@ -476,9 +496,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural9" type="radio" name="radio-item" value="1599"
+                          <input id="paper-painting" type="radio" name="price-item"  data-latex="299" data-id="8"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural9" class="button-account-item d-flex">
+                          <label for="paper-painting" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Живопись</h4>
@@ -492,9 +512,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural10" type="radio" name="radio-item" value="1599"
+                          <input id="paper-decorative-plaster" type="radio" name="price-item"  data-latex="299" data-id="9"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural10" class="button-account-item d-flex">
+                          <label for="paper-decorative-plaster" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Декоративная штукатурка</h4>
@@ -508,9 +528,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural11" type="radio" name="radio-item" value="1599"
+                          <input id="paper-smart-stick" type="radio" name="price-item"  data-latex="299" data-id="10"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural11" class="button-account-item d-flex">
+                          <label for="paper-smart-stick" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Smart Stick</h4>
@@ -524,9 +544,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural12" type="radio" name="radio-item" value="1599"
+                          <input id="paper-pintura" type="radio" name="price-item"  data-latex="299" data-id="11"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural12" class="button-account-item d-flex">
+                          <label for="paper-pintura" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Pintura</h4>
@@ -539,12 +559,12 @@
                         </div>
                       </div>
                     </div>
-                    <div class="account_display-smooth account_display-texture d-opasity">
+                    <div class="account_container" id="account_display-fabric">
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural1" type="radio" name="radio-item" value="1599"
+                          <input id="fabric-plaster" type="radio" name="price-item"  data-latex="299" data-id="1"  value="1599"
                             class="texture-item-input" checked>
-                          <label for="display-textural1" class="button-account-item d-flex">
+                          <label for="fabric-plaster" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Штукатурка</h4>
@@ -558,9 +578,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural2" type="radio" name="radio-item" value="1599"
+                          <input id="fabric-сanvas" type="radio" name="price-item"  data-latex="299" data-id="2"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural2" class="button-account-item d-flex">
+                          <label for="fabric-сanvas" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Холст</h4>
@@ -574,9 +594,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural3" type="radio" name="radio-item" value="1599"
+                          <input id="fabric-dust" type="radio" name="price-item"  data-latex="299" data-id="3"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural3" class="button-account-item d-flex">
+                          <label for="fabric-dust" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Пыль</h4>
@@ -590,9 +610,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural4" type="radio" name="radio-item" value="1599"
+                          <input id="fabric-sand" type="radio" name="price-item"  data-latex="299" data-id="4"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural4" class="button-account-item d-flex">
+                          <label for="fabric-sand" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Песок</h4>
@@ -606,9 +626,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural5" type="radio" name="radio-item" value="1599"
+                          <input id="fabric-small-flax" type="radio" name="price-item"  data-latex="299" data-id="5"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural5" class="button-account-item d-flex">
+                          <label for="fabric-small-flax" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Мелкий лен</h4>
@@ -622,9 +642,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural7" type="radio" name="radio-item" value="1599"
+                          <input id="fabric-gloss" type="radio" name="price-item"  data-latex="299" data-id="6"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural7" class="button-account-item d-flex">
+                          <label for="fabric-gloss" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Лоск</h4>
@@ -638,9 +658,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural8" type="radio" name="radio-item" value="1599"
+                          <input id="fabric-frost" type="radio" name="price-item"  data-latex="299" data-id="7"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural8" class="button-account-item d-flex">
+                          <label for="fabric-frost" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Иней</h4>
@@ -654,9 +674,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural9" type="radio" name="radio-item" value="1599"
+                          <input id="fabric-painting" type="radio" name="price-item"  data-latex="299" data-id="8" value="1599"
                             class="texture-item-input">
-                          <label for="display-textural9" class="button-account-item d-flex">
+                          <label for="fabric-painting" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Живопись</h4>
@@ -670,9 +690,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural10" type="radio" name="radio-item" value="1599"
+                          <input id="fabric-decorative-plaster" type="radio" name="price-item"  data-latex="299" data-id="9"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural10" class="button-account-item d-flex">
+                          <label for="fabric-decorative-plaster" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Декоративная штукатурка</h4>
@@ -686,9 +706,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural11" type="radio" name="radio-item" value="1599"
+                          <input id="fabric-smart-stick" type="radio" name="price-item"  data-latex="299" data-id="10"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural11" class="button-account-item d-flex">
+                          <label for="fabric-smart-stick" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Smart Stick</h4>
@@ -702,9 +722,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural12" type="radio" name="radio-item" value="1599"
+                          <input id="fabric-pintura" type="radio" name="price-item"  data-latex="299" data-id="11"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural12" class="button-account-item d-flex">
+                          <label for="fabric-pintura" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Pintura</h4>
@@ -717,12 +737,12 @@
                         </div>
                       </div>
                     </div>
-                    <div class="account_display-frescoes account_display-texture d-opasity">
+                    <div class="account_container" id="account_display-vinyl">
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural1" type="radio" name="radio-item" value="1599"
+                          <input id="vinyl-plaster" type="radio" name="price-item"  data-latex="299" data-id="1"  value="1599"
                             class="texture-item-input" checked>
-                          <label for="display-textural1" class="button-account-item d-flex">
+                          <label for="vinyl-plaster" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Штукатурка</h4>
@@ -736,9 +756,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural2" type="radio" name="radio-item" value="1599"
+                          <input id="vinyl-сanvas" type="radio" name="price-item"  data-latex="299" data-id="2"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural2" class="button-account-item d-flex">
+                          <label for="vinyl-сanvas" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Холст</h4>
@@ -752,9 +772,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural3" type="radio" name="radio-item" value="1599"
+                          <input id="vinyl-dust" type="radio" name="price-item"  data-latex="299" data-id="3" value="1599"
                             class="texture-item-input">
-                          <label for="display-textural3" class="button-account-item d-flex">
+                          <label for="vinyl-dust" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Пыль</h4>
@@ -768,9 +788,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural4" type="radio" name="radio-item" value="1599"
+                          <input id="vinyl-sand" type="radio" name="price-item"  data-latex="299" data-id="4"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural4" class="button-account-item d-flex">
+                          <label for="vinyl-sand" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Песок</h4>
@@ -784,9 +804,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural5" type="radio" name="radio-item" value="1599"
+                          <input id="vinyl-small-flax" type="radio" name="price-item"  data-latex="299" data-id="5"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural5" class="button-account-item d-flex">
+                          <label for="vinyl-small-flax" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Мелкий лен</h4>
@@ -800,9 +820,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural7" type="radio" name="radio-item" value="1599"
+                          <input id="vinyl-gloss" type="radio" name="price-item"  data-latex="299" data-id="6"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural7" class="button-account-item d-flex">
+                          <label for="vinyl-gloss" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Лоск</h4>
@@ -816,9 +836,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural8" type="radio" name="radio-item" value="1599"
+                          <input id="vinyl-frost" type="radio" name="price-item"  data-latex="299"  data-id="7"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural8" class="button-account-item d-flex">
+                          <label for="vinyl-frost" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Иней</h4>
@@ -832,9 +852,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural9" type="radio" name="radio-item" value="1599"
+                          <input id="vinyl-painting" type="radio" name="price-item"  data-latex="299" data-id="8"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural9" class="button-account-item d-flex">
+                          <label for="vinyl-painting" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Живопись</h4>
@@ -848,9 +868,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural10" type="radio" name="radio-item" value="1599"
+                          <input id="vinyl-decorative-plaster" type="radio" name="price-item"  data-latex="299" data-id="9"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural10" class="button-account-item d-flex">
+                          <label for="vinyl-decorative-plaster" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Декоративная штукатурка</h4>
@@ -864,9 +884,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural11" type="radio" name="radio-item" value="1599"
+                          <input id="vinyl-smart-stick" type="radio" name="price-item"  data-latex="299" data-id="10"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural11" class="button-account-item d-flex">
+                          <label for="vinyl-smart-stick" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Smart Stick</h4>
@@ -880,9 +900,9 @@
                       </div>
                       <div class="account_radio_btn-item d-flex">
                         <div class="texture-item">
-                          <input id="display-textural12" type="radio" name="radio-item" value="1599"
+                          <input id="vinyl-pintura" type="radio" name="price-item"  data-latex="299" data-id="11"  value="1599"
                             class="texture-item-input">
-                          <label for="display-textural12" class="button-account-item d-flex">
+                          <label for="vinyl-pintura" class="button-account-item d-flex">
                             <img src="/static/media/jpg/img-input.jpg" alt="">
                             <div class="label-container">
                               <h4>Pintura</h4>
@@ -895,34 +915,223 @@
                         </div>
                       </div>
                     </div>
+                    <div class="account_container" id="account_display-flizelin-pvh">
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="flizelin-pvh-board" type="radio" name="price-item"  data-latex="920" data-id="12"  value="210"
+                            class="texture-item-input" data-latex="920">
+                          <label for="flizelin-pvh-board" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Доска</h4>
+                              <span>текстура гипса</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">210₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="flizelin-pvh-canvas" type="radio" name="price-item"  data-latex="990" data-id="13"  value="245"
+                            class="texture-item-input" data-latex="990" >
+                          <label for="flizelin-pvh-canvas" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Холст</h4>
+                              <span>текстура грубого холста</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">245₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="flizelin-pvh-frost" type="radio" name="price-item"  data-latex="920" data-id="14"  value="210"
+                            class="texture-item-input" data-latex="920">
+                          <label for="flizelin-pvh-frost" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Мороз</h4>
+                              <span>текстура инея</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">210₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="flizelin-pvh-line" type="radio" name="price-item"  data-latex="990" data-id="15"  value="245"
+                            class="texture-item-input" data-latex="990" >
+                          <label for="flizelin-pvh-line" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Линия</h4>
+                              <span>текстура фрески</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">245₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="flizelin-pvh-marble" type="radio" name="price-item"  data-latex="920" data-id="16"  value="210"
+                            class="texture-item-input" data-latex="920">
+                          <label for="flizelin-pvh-marble" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Мрамор</h4>
+                              <span>текстура мрамора</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">210₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="flizelin-pvh-sink" type="radio" name="price-item"  data-latex="990" data-id="17"  value="245"
+                            class="texture-item-input" data-latex="990" >
+                          <label for="flizelin-pvh-sink" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Раковина</h4>
+                              <span>текстура мелкого песка</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">245₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="flizelin-pvh-smooth" type="radio" name="price-item"  data-latex="990"  data-id="18"  value="245"
+                            class="texture-item-input" data-latex="990" >
+                          <label for="flizelin-pvh-smooth" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Гладь</h4>
+                              <span>гладкие</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">245₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="account_container" id="account_display-flizelin">
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="flizelin-satin" type="radio" name="price-item"  data-latex="1455" data-id="19"  value="477"
+                            class="texture-item-input" data-latex="1455">
+                          <label for="flizelin-satin" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>SIHL 2511 Non-Woven design2wall Sol 195</h4>
+                              <span>Satin</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">477₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="flizelin-matt" type="radio" name="price-item"  data-latex="1455" data-id="20"  value="477"
+                            class="texture-item-input" data-latex="1455">
+                          <label for="flizelin-matt" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>SIHL 2511 Non-Woven design2wall Sol 195</h4>
+                              <span>Matt</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">477₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="account_container" id="account_display-paper-pvh">
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="paper-pvh-sand" type="radio" name="price-item"  data-latex="1899" data-id="21"  value="681"
+                            class="texture-item-input" data-latex="1899">
+                          <label for="paper-pvh-sand" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Magic PEBBLE Textured Vinyl Wallcovering 290g</h4>
+                              <span>крупный песок</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">681₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="account_container" id="account_display-latex">
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="latex-plaster" type="radio" name="price-item"  data-latex="1499" data-id="22"  value="481"
+                            class="texture-item-input" data-latex="1499">
+                          <label for="latex-plaster" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/img-input.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Magic MURAL PRO Latex-Based Wallcovering Paper</h4>
+                              <span>гладкие</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">481₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      
                   </div>
+            
+                </div>
                 </div>
                 <div class="account_item-three">
                   <h4 class="add-order_title medium">Добавить к заказу:</h4>
                   <div class="add-order_container">
                     <div class="add-order_item add-order_checkbox">
-                      <input id="addItemOne" type="checkbox" name="add-item-1" value="299"
-                        class="custom-checkbox add-order_input">
+                      <input id="addItemOne" type="checkbox" name="add-latex" value="299"
+                        class="custom-checkbox add-order_input" data-id="2">
                       <label for="addItemOne" class="add-order_label">
                         <div class="label-container">
                           <h4>Латексная печать</h4>
-                          <span class="add-order_price">299 ₽/М²</span>
+                          <span class="add-order_price" id="addPriceLatex" data-resultLatex="">299 ₽/М²</span>
                         </div>
                       </label>
                     </div>
                     <div class="add-order_item add-order_checkbox">
-                      <input id="addItemTwo" type="checkbox" name="add-item-2" value="59"
-                        class="custom-checkbox add-order_input">
+                      <input id="addItemTwo" type="checkbox" name="add-glue" value="59"
+                        class="custom-checkbox add-order_input" data-id="1">
                       <label for="addItemTwo" class="add-order_label">
-                        <div class="label-container">
+                        <div class="label-container label-glue">
                           <h4>Добавить клей</h4>
                           <span class="add-order_price">59 ₽/М²</span>
                         </div>
                       </label>
                     </div>
                     <div class="add-order_item add-order_checkbox">
-                      <input id="addItemThree" type="checkbox" name="add-item-3" value="399"
-                        class="custom-checkbox add-order_input">
+                      <input id="addItemThree" type="checkbox" name="add-lacquer" value="399"
+                        class="custom-checkbox add-order_input" data-id="3">
                       <label for="addItemThree" class="add-order_label">
                         <div class="label-container">
                           <h4>Покрыть лаком</h4>
@@ -948,8 +1157,8 @@
                   <div class="order-step-two">ШАГ 2</div>
                 </div>
               </div>
-            </form>
-            <form onsubmit="post_form(this); return false" class="account_calculator-registration d-none">
+            </div>
+            <form onsubmit="post_order(this); return false;" class="account_calculator-registration d-none">
               <div class="account_buttin-back">
                 <span class="account_buttin-back-item"> &lt; Назад</span>
               </div>
@@ -959,17 +1168,17 @@
                 </h3>
                 <div class="registration_form-content d-flex flex-column">
                   <div class="registration_form-input">
-                    <label for="registName">Имя</label>
-                    <input id="registName" type="text" placeholder="Ваше имя" required>
+                    <label for="registNameOrder">Имя</label>
+                    <input id="registNameOrder" type="text" name="name"  placeholder="Ваше имя" required>
                   </div>
                   <div class="registration_form-input">
-                    <label for="registPhone">Телефон</label>
-                    <input id="registPhone" type="tel" pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}"
+                    <label for="registPhoneOrder">Телефон</label>
+                    <input id="registPhoneOrder" type="tel" name="phone" pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}"
                       placeholder="+7 (___)" required>
                   </div>
                   <div class="registration_form-input">
-                    <label for="registEmail">E-mail</label>
-                    <input id="registEmail" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                    <label for="registEmailOrder">E-mail</label>
+                    <input id="registEmailOrder" type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                       placeholder="Ваша почта" required>
                   </div>
                 </div>

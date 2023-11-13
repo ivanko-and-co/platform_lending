@@ -45,39 +45,32 @@ function furnitureSelection() {
 furnitureSelection();
 
 
-function typeSelection() {
-    let accountButtons = document.querySelectorAll(".radio_account");
-    let accountTexture = document.querySelector(".account_display-texture");
-    let accountSmooth = document.querySelector(".account_display-smooth");
-    let accountFrescoes = document.querySelector(".account_display-frescoes");
-    accountButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            if (button.checked) {
-                if (button.id === "textural") {
-                    accountTexture.classList.remove("d-opasity");
 
-                    accountSmooth.classList.add("d-opasity");
-                    accountFrescoes.classList.add("d-opasity");
-                }
-                if (button.id === "smooth") {
-                    accountSmooth.classList.remove("d-opasity");
 
-                    accountTexture.classList.add("d-opasity");
-                    accountFrescoes.classList.add("d-opasity");
-                }
-                if (button.id === "frescoes") {
-                    accountFrescoes.classList.remove("d-opasity");
+const menuItems = document.querySelectorAll('.radio_account');
+const products = document.querySelectorAll('.account_container');
 
-                    accountSmooth.classList.add("d-opasity");
-                    accountTexture.classList.add("d-opasity");
-                }
-            }
-        })
-    })
+showProducts = (id) => {
+  products.forEach(product => {
+    product.style.opacity = '0';
+    product.style.zIndex = '1';
+    product.classList.remove('active-dis');
+  });
 
+  const selectedProduct = document.getElementById('account_display-' + id);
+  selectedProduct.style.opacity = '1';
+  selectedProduct.style.zIndex = '10';
+  selectedProduct.classList.add('active-dis');
 }
 
-typeSelection();
+menuItems.forEach(item => {
+  item.addEventListener('click', function() {
+    const itemId = this.id.replace('radio_', '');
+    showProducts(itemId);
+  });
+});
+
+
 
 
 
@@ -150,11 +143,13 @@ transforNumber = (price) => {
 
 let calculaterForm = document.querySelector(".account_calculator-form");
 let accountOrder = document.querySelector(".account_item-three");
-let addItem1 = document.querySelector('input[name="add-item-1"]');
-let addItem2 = document.querySelector('input[name="add-item-2"]');
-let addItem3 = document.querySelector('input[name="add-item-3"]');
+let addItem1 = document.querySelector('input[name="add-latex"]');
+let addItem2 = document.querySelector('input[name="add-glue"]');
+let addItem3 = document.querySelector('input[name="add-lacquer"]');
 let result = document.querySelector(".order-result-price");
 let buttonStepTwo = document.querySelector(".order-step-two");
+const addPriceLatex = document.querySelector("#addPriceLatex");
+const labelGlue = document.querySelector(".label-glue");
 
 let resultPrice = 0;
 buttonStepTwo.classList.add("block");
@@ -179,22 +174,39 @@ getSize = () => {
     return sizeResult;
 }
 
-
+checkingLatex = (itemCheck, addItem1) =>{
+    addItem1.value = Number(itemCheck[0].dataset.latex);
+    addPriceLatex.dataset.resultLatex = addItem1.value;
+    newLetexPrice = addPriceLatex.dataset.resultLatex;
+    addPriceLatex.textContent = newLetexPrice + " ₽/М²";
+};
 
 calculationMaterial = () => {
-    let itemCheck = calculaterForm.querySelectorAll('input[name=radio-item]:checked');
+    let itemCheck = calculaterForm.querySelectorAll('input[name=price-item]:checked');
     let size = getSize();
     for (i = 0; i < itemCheck.length; i++) {
         let item = itemCheck[i];
         let itemPrice = Number(item.value);
         resultPrice = size * itemPrice;
+
+        if(item.dataset.id > 11){
+            addItem2.disabled = true;
+            addItem2.checked = false;
+            labelGlue.classList.add("block-add");
+        }
+        else{
+            addItem2.disabled = false;
+            labelGlue.classList.remove("block-add");
+        }
     }
 
     updateTotalPrice();
 
 
+
     let resultM = Number(result.dataset.result);
     if (addItem1.checked) {
+        checkingLatex(itemCheck, addItem1);
         let addPrice = calculateService(addItem1, size);
         resultPrice = resultM + addPrice;
         resultM += addPrice;
@@ -215,12 +227,13 @@ calculationMaterial = () => {
 
 
     if (resultM < 2000) {
-        return;
+        buttonStepTwo.classList.add("block");
     }
     else {
         buttonStepTwo.classList.remove("block");
     }
 }
+
 
 calculateService = (addItem, size) => {
     servicePrice = Number(addItem.value);
@@ -233,8 +246,9 @@ calculaterForm.addEventListener('change', () => {
 })
 
 
+
 getCheck = () => {
-    let itemCheck = calculaterForm.querySelectorAll('input[name=radio-item]:checked');
+    let itemCheck = calculaterForm.querySelectorAll('input[name=price-item]:checked');
     for (i = 0; i < itemCheck.length; i++) {
         for (i = 0; i < itemCheck.length; i++) {
             let item = itemCheck[i];
@@ -245,6 +259,8 @@ getCheck = () => {
         updateTotalPrice();
     }
 }
+
+
 
 // image
 

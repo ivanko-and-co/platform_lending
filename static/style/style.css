@@ -519,7 +519,9 @@ h4 {
 
 .button-account-item img {
 	max-width: 53px;
+	max-height: 53px;
 }
+
 
 .button-account {
 	font-size: 20px;
@@ -530,6 +532,7 @@ h4 {
 
 .account_radio_btn input[type=radio]:checked+label {
 	color: var(--main);
+	font-weight: 500;
 }
 
 .button-account:hover {
@@ -543,17 +546,52 @@ h4 {
 	border-bottom: 1px solid #CFCFCF;
 }
 
+.account_texture{
+	overflow: hidden;
+	overflow-x:scroll;
+	height: 64px;
+}
 
-#line {
+.account_texture::-webkit-scrollbar {
+	height: 5px;
+}
+
+.account_texture::-webkit-scrollbar-thumb { /* плашка-бегунок */
+	background: #e5ada5;
+	border-radius: 10px;
+  }
+.account_texture::-webkit-scrollbar-track { /* фон */
+	background: var(--white);
+  }
+
+.account_radio_btn label{
+	display: flex;
+	flex-direction: column;
+	max-width: 200px;
+}
+
+.btn-latex label{
+	width: 190px;
+}
+
+.account_radio_btn{
+	display: flex;
+	align-items: end;
+}
+
+
+/* #line {
 	position: absolute;
 	bottom: 0;
 	height: 2px;
 	width: 100px;
 	background-color: var(--main);
 	transition: left 0.3s ease;
+} */
+
+.span-pvh{
+	font-size: 12px;
 }
-
-
 
 .account_display {
 	padding: 15px 0;
@@ -585,6 +623,11 @@ h4 {
 	flex-direction: column;
 }
 
+.label-container-two{
+	width: 200px;
+	align-items: end;
+}
+
 .label-container span {
 	font-size: 14px;
 	color: #818181;
@@ -613,7 +656,7 @@ h4 {
 }
 
 .account_display,
-.account_display-texture {
+.account_container{
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -702,6 +745,10 @@ h4 {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 30px;
+}
+
+.block-add{
+	color: #b6b6b6;
 }
 
 .order-result-info span {
@@ -964,14 +1011,16 @@ h4 {
 	position: relative;
 }
 
-.account_display-smooth,
-.account_display-frescoes,
-.account_display-texture {
+ .account_container{
 	position: absolute;
 	width: 100%;
 }
 
-
+#account_display-paper{
+	opacity: 1;
+	z-index: 10;
+	background-color: var(--white);
+}
 
 .slider-wrapper {
 	height: 550px;
