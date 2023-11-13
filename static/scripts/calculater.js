@@ -1,4 +1,10 @@
 
+let  displayBtn = document.querySelector(".display-btn");
+const image_input = document.querySelector('#imageInput');
+
+displayBtn.addEventListener('click', () =>{
+    image_input.click();
+})
 
 function furnitureSelection() {
     let furnitureFon = new Map([
@@ -264,7 +270,7 @@ getCheck = () => {
 
 // image
 
-const image_input = document.querySelector('#imageInput');
+
 let uploaded_img = "";
 
 image_input.addEventListener('change', (event) => {

@@ -274,7 +274,6 @@
                     </a>
                   </p>
                   <div class="button-file d-flex flex-column">
-                    <input type="file" name="file" id="imageInput" accept="image/jpeg, image/png, image/jpg">
                     <button class="btn display-btn">Загрузить фото</button>
                   </div>
                 </div>
@@ -1158,7 +1157,13 @@
                 </div>
               </div>
             </div>
-            <form onsubmit="post_order(this); return false;" class="account_calculator-registration d-none">
+            <form action="/order"  onsubmit="post_order(this);" class="account_calculator-registration d-none" method="post">
+              <input hidden name="width">
+              <input hidden name="height">
+              <input hidden name="product_id">
+              <input hidden name="category_id">
+              <input hidden type="file" name="file_img" id="imageInput" accept="image/jpeg, image/png, image/jpg">
+              <input hidden name="extra">
               <div class="account_buttin-back">
                 <span class="account_buttin-back-item"> &lt; Назад</span>
               </div>
