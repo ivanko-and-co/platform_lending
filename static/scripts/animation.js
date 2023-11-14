@@ -2,7 +2,6 @@
 
 
 let height = $('.account_container').height();
-height += 25;
 $('.account_display').css({ 'height': height }, 500)
 
 
