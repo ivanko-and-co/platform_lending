@@ -1,3 +1,11 @@
+:root {
+	--main: #D65544;
+	--white: #fff;
+	--grey: #818181;
+	--black: #2B2B2B;
+}
+
+
 /* анимация "готовые решения" */
 .ready_gallery-item:hover .ready_gallery-name {
     transition: all 1s;
@@ -17,8 +25,12 @@
 
 /* анимация дисплея фотообоев */
 
-.display-two .button-file {
+.display-two .button-file{
     animation: up-button .5s ease-in-out forwards;
+}
+
+.display-two .display-btn{
+   color: #fff;
 }
 
 @keyframes up-button {
@@ -27,13 +39,18 @@
     }
 
     100% {
-        transform: translateY(-450%);
+        transform: translateY(200%) translateX(-50%);
+        background-color: var(--main);
     }
 }
 
 .display-two .display-text {
     text-align: center;
     animation: up-text .5s ease-in-out forwards;
+}
+
+.display-two .file-link {
+    color: aliceblue;
 }
 
 @keyframes up-text {
@@ -47,9 +64,9 @@
 
     100% {
         text-align: left;
-        margin-right: 120px;
         max-width: 230px;
-        transform: translateY(-100%);
+        color: aliceblue;
+        transform: translateY(220%) translateX(55%);
     }
 }
 
@@ -67,7 +84,7 @@
     100% {
         width: 25%;
         height: 25%;
-        transform: translateX(150%) translateY(1%);;
+        transform: translateX(350%) translateY(400%);
     }
 }
 
@@ -80,7 +97,7 @@
 
 @keyframes up-buttonOne {
     0% {
-        transform: translateY(-450%);
+        transform: translateY(200%) translateX(-50%);
     }
 
     100% {
@@ -95,7 +112,7 @@
 @keyframes up-textOne {
     0% {
         text-align: left;
-        transform: translateY(-300%);
+        transform: translateY(220%) translateX(55%);
     }
 
     100% {
@@ -110,22 +127,24 @@
 
 @keyframes up-imgOne {
     0% {
-        transform: translateX(110%);
+        transform: translateX(350%) translateY(400%);
         width: 96px;
         height: 96px;
     }
 
-
-    100% {
+    50%{
         width: 200px;
         height: 200px;
+    }
+
+    100% {
         transform: translateX(0%);
         transition: all .5s;
     }
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 1400px) {
 	@keyframes up-img {
         0% {
             transform: translateY(100%);
@@ -137,7 +156,7 @@
             margin-left: auto;
             width: 96px;
             height: 96px;
-            transform: translateY(-40%);
+            transform: translateY(320%);
         }
     }
 
@@ -154,7 +173,8 @@
             text-align: left;
             margin-right: 100px;
             max-width: 230px;
-            transform: translateY(-140%);
+            color: aliceblue;
+            transform: translateY(200%);
         }
     }
 
@@ -164,10 +184,107 @@
         }
     
         100% {
-            transform: translateY(-570%);
+            transform: translateY(-10%);
+            background-color: var(--main);
         }
     }
 }
+
+@media (max-width: 970px) {
+	@keyframes up-button {
+        0% {
+            transform: translateY(100%);
+        }
+    
+        100% {
+            transform: translateY(200%) translateX(-50%);
+            background-color: var(--main);
+        }
+    }
+
+    @keyframes up-text {
+        0% {
+            transform: translateY(100%);
+        }
+    
+        50%{
+            max-width: 230px;
+        }
+    
+        100% {
+            text-align: left;
+            max-width: 230px;
+            color: aliceblue;
+            transform: translateY(220%) translateX(55%);
+        }
+    }
+    
+    .display-two .display-img {
+        animation: up-img .5s ease forwards;
+    }
+    
+    @keyframes up-img {
+        0% {
+            width: 200px;
+            height: 200px;
+        }
+    
+    
+        100% {
+            width: 25%;
+            height: 25%;
+            transform: translateX(350%) translateY(400%);
+        }
+    }
+}
+
+
+@media (max-width: 720px) {
+	@keyframes up-img {
+        0% {
+            transform: translateY(100%);
+            width: 200px;
+            height: 200px;
+        }
+    
+        100% {
+            margin-left: auto;
+            width: 96px;
+            height: 96px;
+            transform: translateY(320%);
+        }
+    }
+
+    @keyframes up-text {
+        0% {
+            transform: translateY(100%);
+        }
+    
+        50%{
+            max-width: 230px;
+        }
+    
+        100% {
+            text-align: left;
+            margin-right: 100px;
+            max-width: 230px;
+            color: aliceblue;
+            transform: translateY(200%);
+        }
+    }
+
+    @keyframes up-button {
+        0% {
+            transform: translateY(100%);
+        }
+    
+        100% {
+            transform: translateY(-10%);
+            background-color: var(--main);
+        }
+    }
+}
+
 
 /*  */
 

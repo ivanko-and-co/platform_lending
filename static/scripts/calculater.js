@@ -189,18 +189,23 @@ checkingLatex = (itemCheck, addItem1) =>{
 
 calculationMaterial = () => {
     let itemCheck = calculaterForm.querySelectorAll('input[name=price-item]:checked');
+    let categoryCheck = calculaterForm.querySelectorAll('input[name=radioTex]');
     let size = getSize();
-    for (i = 0; i < itemCheck.length; i++) {
+    for (let i = 0; i < itemCheck.length; i++) {
         let item = itemCheck[i];
         let itemPrice = Number(item.value);
         resultPrice = size * itemPrice;
+    }
 
-        if(item.dataset.id > 11){
+    for(let j = 0; j < categoryCheck.length; j++){
+        let category = categoryCheck[j];
+        let checkItem = category.checked;
+        if(checkItem && category.dataset.id > 3){
             addItem2.disabled = true;
             addItem2.checked = false;
             labelGlue.classList.add("block-add");
         }
-        else{
+        if(checkItem && category.dataset.id <= 3){
             addItem2.disabled = false;
             labelGlue.classList.remove("block-add");
         }
