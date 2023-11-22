@@ -5,7 +5,6 @@ let height = $('.account_container').height();
 $('.account_display').css({ 'height': height }, 500)
 
 
-
 $('.radio_account').on('change', () => {
   let height = $('.active-dis').height();
   height += 25;
