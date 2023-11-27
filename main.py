@@ -8,14 +8,22 @@ from string import ascii_letters
 from random import choices
 
 import requests
-from flask import Flask, render_template, jsonify, request, url_for, redirect
+from flask import Flask, render_template, jsonify, request, url_for, redirect, send_file
 from werkzeug.utils import secure_filename
 import smtplib
-# from redis import Redis
 
-# redis = Redis(decode_responses=True)
+from SQL import SQL
+
 app = Flask(__name__)
-app.config['email'] = 'oboi@usexpo.ru'
+app.config['email'] = 'dxd.vgv@gmail.com'  # 'oboi@usexpo.ru'
+
+sql = SQL(
+    username='sokoloy8_lending',
+    passwd='2107787#Aa',
+    server='sokoloy8.beget.tech',
+    port=3306,
+    database='sokoloy8_lending'
+)
 
 PRODUCT = {
     1: {"price_size": 1599, "EXTRA": {1: {"name": "Добавить клей", "price": 59}, 2: {"name": "Латексная печать", "price": 299}, 3: {"name": "Покрыть лаком", "price": 399}}, "name": "Штукатурка"},
@@ -69,18 +77,22 @@ def main():
 @app.route('/record', methods=['POST'])
 def form_record():
     text = f'Имя: {request.form["name"]}\nТелефон: {request.form["phone"]}\nПочта: {request.form["email"]}'
-    send_mail(text, subject='Запись на консультацию') # TODO
+    send_mail(text, subject='Запись на консультацию')
     return jsonify(True)
 
 
 @app.route('/callback_url/<path:order_id>')
 def callback(order_id: str):
     if request.args['result'] == 'success':
-        if redis.exists(order_id):
-            send_mail(data=redis.get(order_id))
-            redis.delete(order_id)
+        data = sql.select_order(order_id)
+        send_mail(data=data)
 
     return redirect(url_for('main'))
+
+
+@app.route('/callback_view/<path:file>')
+def get_file(file: str):
+    return send_file(os.path.join('static', 'user_file', file))
 
 
 @app.route('/callback_view')
@@ -90,7 +102,7 @@ def callback_view():
     return jsonify(False)
 
 
-@app.route('/order' , methods=['POST']) 
+@app.route('/order', methods=['POST'])
 def form_order(): 
     width: int = int(request.form['width'])
     height: int = int(request.form['height'])
@@ -101,13 +113,18 @@ def form_order():
     phone = request.form['phone']
 
     order_id = ''.join(choices(ascii_letters + '1234567890', k=5))
+    sql.create_connection()
+    query = sql.select_order(order_id)
+    while len(query) > 0:
+        order_id = ''.join(choices(ascii_letters + '1234567890', k=5))
+        query = sql.select_order(order_id)
 
     file = 'Файл отсутствует'
-    # if 'file' in request.files:
-    #     ext = secure_filename(request.files['file'].filename).split('.')[1]
-    #     request.files['file'].filename = order_id + '.' + ext
-    #     request.files['file'].save(os.path.join('static', 'user_file'))
-    #     file = url_for('get_file', file='')
+    if 'file' in request.files:
+        ext = secure_filename(request.files['file'].filename).split('.')[1]
+        request.files['file'].filename = order_id + '.' + ext
+        request.files['file'].save(os.path.join('static', 'user_file'))
+        file = url_for('get_file', file='')
 
     price = product['price_size']
     extra_str = ''
@@ -121,8 +138,9 @@ def form_order():
     message = f'Заказ\nИмя: {request.form["name"]}\nТелефон: {phone}\nEmail: {email}\n'
     message += f'Заказ № {order_id}\n    Категория: {category}\n    Товар: {product["name"]}\n'
     message += f'    Допы:{extra_str}\n    Сумма: {sum}\n    Файл: {file}'
-    # redis.set(name=order_id, value=message, ex=3600)
 
+    sql.insert_order(order_id, message)
+    sql.close_connection()
 
     sign = sha256(
         (str(sum) + '' + '' + '' + email + phone).encode('utf-8'))
@@ -133,7 +151,7 @@ def form_order():
         client_email=email,
         client_phone=phone,
         sign=sign,
-        # user_result_callback=url_for('callback', order_id=order_id)
+        user_result_callback=url_for('callback', order_id=order_id)
     )
 
     result = requests.post('https://oboi-usexpo.server.paykeeper.ru/create/', data=data)
@@ -142,10 +160,10 @@ def form_order():
 
 def send_mail(data, mime='plain', subject='Заказ на сайте', email=app.config['email']):
     # данные почтового сервиса
-    user = ""
-    passwd = ""
-    server = ""
-    port = ...
+    user = "sokoloy8@usexpo.ru"
+    passwd = "2107787#Aa"
+    server = "sokoloy8@usexpo.ru"
+    port = 2525
 
     # кому
     to = email
