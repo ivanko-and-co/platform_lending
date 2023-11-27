@@ -40,7 +40,6 @@
 
     100% {
         transform: translateY(200%) translateX(-50%);
-        background-color: var(--main);
     }
 }
 
@@ -144,6 +143,19 @@
 }
 
 
+@media (min-width: 1400px) {
+    @keyframes up-button {
+        0% {
+            transform: translateY(100%);
+        }
+    
+        100% {
+            transform: translateY(200%) translateX(-50%);
+            background-color: var(--main);
+        }
+    }
+}
+
 @media (max-width: 1400px) {
 	@keyframes up-img {
         0% {
@@ -185,7 +197,6 @@
     
         100% {
             transform: translateY(-10%);
-            background-color: var(--main);
         }
     }
 }
@@ -280,7 +291,6 @@
     
         100% {
             transform: translateY(-10%);
-            background-color: var(--main);
         }
     }
 }

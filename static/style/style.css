@@ -1200,6 +1200,10 @@ h4 {
 	.rules_file {
 		margin-left: 0;
 	}
+
+	.display-btn{
+		background-color: none;
+	}
 }
 
 @media (max-width: 990px) {
