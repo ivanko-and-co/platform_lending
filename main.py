@@ -84,7 +84,9 @@ def form_record():
 @app.route('/callback_url/<path:order_id>')
 def callback(order_id: str):
     if request.args['result'] == 'success':
-        data = sql.select_order(order_id)
+        sql.create_connection()
+        data = sql.select_order(order_id)[0]['text']
+        sql.close_connection()
         send_mail(data=data)
 
     return redirect(url_for('main'))
@@ -92,7 +94,7 @@ def callback(order_id: str):
 
 @app.route('/callback_view/<path:file>')
 def get_file(file: str):
-    return send_file(os.path.join('static', 'user_file', file))
+    return send_file(os.path.join('static', 'media', 'user_file', file))
 
 
 @app.route('/callback_view')
@@ -120,11 +122,11 @@ def form_order():
         query = sql.select_order(order_id)
 
     file = 'Файл отсутствует'
-    if 'file' in request.files:
-        ext = secure_filename(request.files['file'].filename).split('.')[1]
-        request.files['file'].filename = order_id + '.' + ext
-        request.files['file'].save(os.path.join('static', 'user_file'))
-        file = url_for('get_file', file='')
+    if 'file_img' in request.files:
+        ext = secure_filename(request.files['file_img'].filename).split('.')[1]
+        request.files['file_img'].filename = order_id + '.' + ext
+        request.files['file_img'].save(os.path.join('FlaskApp', 'static', 'media', 'user_file', request.files['file_img'].filename))
+        file = url_for('get_file', file=request.files['file_img'].filename)
 
     price = product['price_size']
     extra_str = ''
@@ -162,7 +164,7 @@ def send_mail(data, mime='plain', subject='Заказ на сайте', email=ap
     # данные почтового сервиса
     user = "sokoloy8@usexpo.ru"
     passwd = "2107787#Aa"
-    server = "sokoloy8@usexpo.ru"
+    server = "smtp.beget.com"
     port = 2525
 
     # кому

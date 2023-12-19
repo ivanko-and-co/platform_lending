@@ -40,7 +40,7 @@ class SQL:
             return False
 
     def insert_order(self, order_id: str, test: str):
-        if self.query(query="INSERT orders (`id`, `text`) VALUES (%s, %s)",
+        if self.query(query="INSERT orders (`id`, `text`) VALUES (%s, %s); COMMIT;",
                    params=(order_id, test)) is False:
             return False
 

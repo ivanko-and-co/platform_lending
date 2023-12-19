@@ -12,7 +12,6 @@ async function fetch_json(url, data) {
   return await response.json()
 }
 
-
 sending_form = () => {
   let popup = document.querySelector(".popup_inner");
   let calculatorRegistration = document.querySelector(".calculator-registration-mobail");
@@ -29,7 +28,6 @@ sending_form = () => {
   setTimeout(closedForm, 2000);
 }
 
-
 async function post_form() {
   result = await fetch_json('/record', {
     name: document.querySelector("#registName").value,
@@ -42,12 +40,45 @@ async function post_form() {
   }
 }
 
+document.querySelectorAll("input[name=radioTex]").forEach(element => {
+  element.addEventListener('change', event => {
+    category_id(element)
+  })
+})
 
+function category_id(element) {
+  if (element.checked) {
+    document.querySelector("input[name=category_id]").value = element.dataset.id;
+  }
+}
 
+document.querySelectorAll("input[name=price-item]").forEach(element => {
+  element.addEventListener('change', event => {
+    price_item(element)
+  })
+})
 
+function price_item(element) {
+  if (element.checked) {
+    document.querySelector("input[name=product_id]").value = element.dataset.id;
+  }
+}
 
+document.querySelector("#accountHeight").addEventListener('change', event => {
+  document.querySelector("input[name=height]").value = document.querySelector("#accountHeight").value;
+})
 
-function post_order(form) {
+document.querySelector("#accountWidth").addEventListener('change', event => {
+  document.querySelector("input[name=width]").value = document.querySelector("#accountWidth").value;
+})
+
+document.querySelectorAll("input[type=checkbox]").forEach(element => {
+  element.addEventListener('change', event => {
+    extra()
+  })
+})
+
+function extra() {
   let addItems = document.querySelectorAll("input[type=checkbox]");
   let selectedItems = [];
   for (let i = 0; i < addItems.length; i++) {
@@ -55,12 +86,5 @@ function post_order(form) {
       selectedItems.push(Number(addItems[i].dataset.id));
     }
   }
-
-
-  form.querySelector("input[name=width]").value = document.querySelector("#accountWidth").value;
-  form.querySelector("input[name=height]").value = document.querySelector("#accountHeight").value;
-  form.querySelector("input[name=product_id]").value = document.querySelector("input[name=price-item]:checked").dataset.id;
-  form.querySelector("input[name=category_id]").value = document.querySelector("input[name=radioTex]:checked").dataset.id;
-  form.querySelector("input[name=extra]").value = JSON.stringify(selectedItems);
-
+  document.querySelector("input[name=extra]").value = JSON.stringify(selectedItems);
 }
