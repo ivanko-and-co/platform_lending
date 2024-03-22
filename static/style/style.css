@@ -979,8 +979,12 @@ h4 {
 }
 
 .form-submit-popup {
-	height: 60px;
+	height: 64px;
 	background-color: var(--main) !important;
+	color: var(--white);
+}
+
+.form-submit-popup:hover {
 	color: var(--white);
 }
 
