@@ -1,7 +1,7 @@
 import os.path
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from hashlib import sha256
+from hashlib import sha256, md5
 from typing import TypedDict
 import json
 from string import ascii_letters
@@ -15,14 +15,15 @@ import smtplib
 from SQL import SQL
 
 app = Flask(__name__)
-app.config['email'] = 'dxd.vgv@gmail.com'  # 'oboi@usexpo.ru'
+app.config['email'] = ''
+app.config['SECRET_KEY'] = ''
 
 sql = SQL(
-    username='sokoloy8_lending',
-    passwd='2107787#Aa',
-    server='sokoloy8.beget.tech',
+    username='',
+    passwd='',
+    server='',
     port=3306,
-    database='sokoloy8_lending'
+    database=''
 )
 
 PRODUCT = {
@@ -76,7 +77,7 @@ def main():
 
 @app.route('/record', methods=['POST'])
 def form_record():
-    text = f'Имя: {request.form["name"]}\nТелефон: {request.form["phone"]}\nПочта: {request.form["email"]}'
+    text = f'Имя: {request.json["name"]}\nТелефон: {request.json["phone"]}\nПочта: {request.json["email"]}'
     send_mail(text, subject='Запись на консультацию')
     return jsonify(True)
 
@@ -97,11 +98,14 @@ def get_file(file: str):
     return send_file(os.path.join('static', 'media', 'user_file', file))
 
 
-@app.route('/callback_view')
+@app.route('/pay_callback', methods=['POST', 'GET'])
 def callback_view():
-    if 'result' in app.config:
-        return jsonify(app.config['result'])
-    return jsonify(False)
+    sql.create_connection()
+    data = sql.select_order(request.form['orderid'])[0]['text']
+    sql.close_connection()
+    send_mail(data=data)
+    hash = md5(request.form['id'] + 'De25f2e.Jc)rl=p}9P')
+    return f'OK {hash}'
 
 
 @app.route('/order', methods=['POST'])
@@ -122,11 +126,11 @@ def form_order():
         query = sql.select_order(order_id)
 
     file = 'Файл отсутствует'
-    if 'file_img' in request.files:
+    if 'file_img' in request.files and request.files['file_img']:
         ext = secure_filename(request.files['file_img'].filename).split('.')[1]
         request.files['file_img'].filename = order_id + '.' + ext
         request.files['file_img'].save(os.path.join('FlaskApp', 'static', 'media', 'user_file', request.files['file_img'].filename))
-        file = url_for('get_file', file=request.files['file_img'].filename)
+        file = 'https://oboi.usexpo.ru' + url_for('get_file', file=request.files['file_img'].filename)
 
     price = product['price_size']
     extra_str = ''
@@ -153,19 +157,20 @@ def form_order():
         client_email=email,
         client_phone=phone,
         sign=sign,
-        user_result_callback=url_for('callback', order_id=order_id)
+        user_result_callback='oboi.usexpo.ru'
     )
 
     result = requests.post('https://oboi-usexpo.server.paykeeper.ru/create/', data=data)
+
     return result.content
 
 
 def send_mail(data, mime='plain', subject='Заказ на сайте', email=app.config['email']):
     # данные почтового сервиса
-    user = "sokoloy8@usexpo.ru"
-    passwd = "2107787#Aa"
-    server = "smtp.beget.com"
-    port = 2525
+    user = ""
+    passwd = ""
+    server = "smtp.gmail.com"
+    port = 587
 
     # кому
     to = email

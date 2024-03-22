@@ -35,8 +35,8 @@ async function post_form() {
     email: document.querySelector("#registEmail").value,
   });
 
-  if (response.ok) {
-    sending_form();
+  if (result === '200') {
+    document.querySelector(".btn-closed").click();
   }
 }
 
