@@ -1,0 +1,1313 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style/reset.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="/static/style/style.css">
+  <link rel="stylesheet" href="/static/style/animations.css">
+  <title>Usexpo</title>
+  <link rel="shortcut icon" href="/static/media/svg/logo.svg" type="image/x-icon">
+</head>
+
+<body>
+  <div class="blur d-none"></div>
+  <header class="header">
+    <div class="header_container">
+      <div class="header_logo">
+        <img src="/static/media/svg/logo.svg" alt="logo">
+      </div>
+      <div class="header_contact d-flex">
+        <div class="header_phone">
+          <a href="tel:+74959700430">
+            <h4>+7 (495) 970-04-30</h4>
+          </a>
+        </div>
+        <div class="header_email">
+          <a href="mailto:oboi@usexpo.ru">oboi@usexpo.ru</a>
+        </div>
+      </div>
+      <nav class="header_navigation">
+        <ul class="nav_list">
+          <a href="#catalog" class="nav_list-link">
+            <li class="nav-item">
+              Каталог
+            </li>
+          </a>
+          <a href="#gallery" class="nav_list-link">
+            <li class="nav-item">
+              Галлерея работ
+            </li>
+          </a>
+          <a href="#contact" class="nav_list-link">
+            <li class="nav-item">
+              Контактная информация
+            </li>
+          </a>
+        </ul>
+      </nav>
+      <button class="btn header_btn btn-popup">СДЕЛАТЬ ЗАКАЗ</button>
+    </div>
+    <div class="header_mobail">
+      <div class="header_logo">
+        <img src="/static/media/svg/logo.svg" alt="logo">
+      </div>
+      <div class="mobail_burger">
+        <div class="line_mobail"></div>
+        <div class="line_mobail"></div>
+        <div class="line_mobail"></div>
+      </div>
+      <div class="mobail_menu d-none">
+        <div class="mobail-closed">
+          <img src="/static/media/svg/close-w.svg" alt="closed">
+        </div>
+        <div class="header_contact d-flex">
+          <div class="header_phone">
+            <a href="tel:+74959700430">
+              <h4>+7 (495) 970-04-30</h4>
+            </a>
+          </div>
+          <div class="header_email">
+            <a href="mailto:oboi@usexpo.ru">oboi@usexpo.ru</a>
+          </div>
+        </div>
+        <nav class="header_navigation">
+          <ul class="nav_list">
+            <a href="#catalog" class="nav_list-link">
+              <li class="nav-item">
+                Каталог
+              </li>
+            </a>
+            <a href="#gallery" class="nav_list-link">
+              <li class="nav-item">
+                Галлерея работ
+              </li>
+            </a>
+            <a href="#contact" class="nav_list-link">
+              <li class="nav-item">
+                Контактная информация
+              </li>
+            </a>
+          </ul>
+        </nav>
+        <button class="btn mobail-header_btn btn-popup">СДЕЛАТЬ ЗАКАЗ</button>
+      </div>
+    </div>
+  </header>
+
+
+  <form onsubmit="post_form(this); return false" class="popup-container d-none" method="POST">
+    <div class="popup popup-order">
+      <div class="btn-closed">
+        <img src="/static/media/svg/closed.svg" alt="closed">
+      </div>
+      <div class="popup_inner d-flex flex-column">
+        <h3 class="registration_popup-title">
+          Оставьте ваши контактные данные
+        </h3>
+        <div class="registration_form-content d-flex flex-column">
+          <div class="registration_form-input">
+            <label for="registName">Имя</label>
+            <input id="registName" type="text" placeholder="Ваше имя" name="name" required>
+          </div>
+          <div class="registration_form-input">
+            <label for="registPhone">Телефон</label>
+            <input id="registPhone" type="tel" pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}"
+              placeholder="+7(___)___-__-__" value="+7(___)___-__-__" name="phone" required>
+          </div>
+          <div class="registration_form-input">
+            <label for="registEmail">E-mail</label>
+            <input id="registEmail" type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              placeholder="Ваша почта" required>
+          </div>
+        </div>
+        <div class="registration_form-submit d-flex flex-column">
+          <input type="submit" value="ОФОРМИТЬ ЗАКАЗ" class="btn form-submit-popup form-submit" id="btn-popup">
+          <div class="registration_agree add-order_item">
+            <input id="popupAgree" type="radio" name="registration" value="agree" class="custom-radio" required>
+            <label for="popupAgree" class="add-order_label">
+              <div class="label-container">
+                <p>
+                  Отправляя сведения, я даю свое согласие на обработку моих персональных данных в соответствии
+                  с
+                  законом №152-ФЗ «О персональных данных» от 27.07.2006, ознакомился и принимаю условия
+                  <a href="#">Пользовательского соглашения</a>, <a href="#">Политики конфиденциальности</a> и
+                  <a href="#">Договора оферты</a>.
+                </p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="calculator-registration-mobail d-flex flex-column mt-5 d-none">
+        <h3>Спасибо за заявку!</h3>
+        <h4>Наши менеджеры вскоре свяжутся с вами для уточнения деталей</h4>
+      </div>
+    </div>
+  </form>
+  <main>
+    <section class="main_slider">
+      <div class="swiper headerSwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="slide_content">
+              <h2 class="slide_title">
+                Экологичная печать
+              </h2>
+              <p class="slide_text">
+                Натуральные и безопасные фотообои, созданные специально для вашего благополучия.
+              </p>
+              <div class="slide_btn-container">
+                <button class="slide_btn btn-main btn-popup">ОФОРМИТЬ ЗАКАЗ</button>
+              </div>
+            </div>
+            <img src="/static/media/jpg/slide-1.jpg" alt="" class="slide_img">
+          </div>
+          <div class="swiper-slide">
+            <div class="slide_content">
+              <h2 class="slide_title">
+                По вашему дизайну
+              </h2>
+              <p class="slide_text">
+                Ваши идеи, наши фотообои: печать по вашему дизайну на современном оборудовании.
+              </p>
+              <div class="slide_btn-container">
+                <button class="slide_btn btn-main btn-popup">ОФОРМИТЬ ЗАКАЗ</button>
+              </div>
+            </div>
+            <img src="/static/media/jpg/slide-2.jpg" alt="" class="slide_img">
+          </div>
+          <div class="swiper-slide">
+            <div class="slide_content">
+              <h2 class="slide_title">
+                Помощь ИИ
+              </h2>
+              <p class="slide_text">
+                Будущее в деталях: создавайте фотообои с помощью искусственного интеллекта.
+              </p>
+              <div class="slide_btn-container">
+                <button class="slide_btn btn-main btn-popup">ОФОРМИТЬ ЗАКАЗ</button>
+              </div>
+            </div>
+            <img src="/static/media/jpg/slide-3.jpg" alt="" class="slide_img">
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <section class="ready-solutions" id="catalog">
+      <div class="container">
+        <div class="ready-solutions-top row col-lg-12">
+          <h2 class="ready_title">
+            Готовые решения
+          </h2>
+          <p class="ready_text">
+            Вдохновляйтесь нашими готовыми дизайнами или создайте свой собственный уникальный фотообои.
+          </p>
+        </div>
+        <div class="ready_gallery row">
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Минимализм</span>
+            <img src="/static/media/jpg/gallery-1.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Абстракция и 3D</span>
+            <img src="/static/media/jpg/gallery-2.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Живопись и графика</span>
+            <img src="/static/media/jpg/gallery-3.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Природа</span>
+            <img src="/static/media/jpg/gallery-4.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Цветы и растения</span>
+            <img src="/static/media/jpg/gallery-5.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Городские пейзажи</span>
+            <img src="/static/media/jpg/gallery-6.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Животные</span>
+            <img src="/static/media/jpg/gallery-7.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Космос</span>
+            <img src="/static/media/jpg/gallery-8.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+          <div class="ready_gallery-item col-lg-4">
+            <span class="ready_gallery-name">Для детей</span>
+            <img src="/static/media/jpg/gallery-9.jpg" alt="gallery-1" class="gallery_img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="calculater">
+      <div class="container">
+        <h2 class="text-center">Расчитать стоимость</h2>
+        <div class="row mt-5">
+          <div class="col-lg-6 display-row">
+            <div class="display_calculater d-flex ">
+              <div class="display">
+                <div class="display-top">
+                  <img src="/static/media/png/Interior_01.png" alt="office" class="display-furniture">
+                </div>
+                <div class="display-bottom">
+                  <div class="display-img">
+                    <img src="/static/media/svg/img.svg" alt="img">
+                  </div>
+                  <p class="display-text">
+                    Формат загружаемого файла: jpeg, gif или png, максимальный размер — 15 Mb
+                    <a href="../static/media/file/technical-file.pdf" download class="file-link display-file">
+                      Тех характеристики файла для печати
+                    </a>
+                  </p>
+                  <div class="button-file d-flex flex-column">
+                    <button class="btn display-btn">Загрузить фото</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="button-group_colculator">
+              <div class="display_radio_btn">
+                <input id="noFurniture" type="radio" name="radioDis" value="1" class="radio_furniture" checked>
+                <label for="noFurniture" class="button-colculator btn">Без мебели</label>
+              </div>
+
+              <div class="display_radio_btn ">
+                <input id="officeFurniture" type="radio" name="radioDis" value="2" class="radio_furniture">
+                <label for="officeFurniture" class="button-colculator btn">Офис</label>
+              </div>
+
+              <div class="display_radio_btn">
+                <input id="hallFurniture" type="radio" name="radioDis" value="3" class="radio_furniture">
+                <label for="hallFurniture" class="button-colculator btn">Детская</label>
+              </div>
+
+              <div class="display_radio_btn">
+                <input id="bedroomFurniture" type="radio" name="radioDis" value="4" class="radio_furniture">
+                <label for="bedroomFurniture" class="button-colculator btn">Спальня</label>
+              </div>
+
+              <div class="display_radio_btn">
+                <input id="livingFurniture" type="radio" name="radioDis" value="4" class="radio_furniture">
+                <label for="livingFurniture" class="button-colculator btn">Гостинная</label>
+              </div>
+              <div class="display_radio_btn">
+                <input id="livingFurniture2" type="radio" name="radioDis" value="5" class="radio_furniture">
+                <label for="livingFurniture2" class="button-colculator btn">Гостинная-2</label>
+              </div>
+              <div class="display_radio_btn">
+                <input id="kitchenFurniture" type="radio" name="radioDis" value="6" class="radio_furniture">
+                <label for="kitchenFurniture" class="button-colculator btn">Кухня</label>
+              </div>
+              <div class="display_radio_btn">
+                <input id="kitchenFurniture2" type="radio" name="radioDis" value="7" class="radio_furniture">
+                <label for="kitchenFurniture2" class="button-colculator btn">Кухня-2</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="account_calculator col-lg-5 offset-lg-1">
+            <div class="account_calculator-form ">
+              <div class="account_calculater-info">
+                <div class="account_item-one">
+                  <h4 class="medium">Размер стены:</h4>
+                  <div class="account_wh d-flex">
+                    <div class="account_width">
+                      <label for="accountWidth">Ширина, см</label>
+                      <input type="number" class="input-wh" value="100" id="accountWidth">
+                    </div>
+                    <div class="account_width">
+                      <label for="accountHeight">Высота, см</label>
+                      <input type="number" class="input-wh" value="100" id="accountHeight">
+                    </div>
+                    <div class="specifications_file">
+                      <a href="../static/media/file/technical-file.pdf" download class="file-link">
+                        Тех характеристики файла для печати
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="account_item-two">
+                  <h4 class="account_title medium">Материалы для обоев:</h4>
+                  <div class="account_texture" id="accountTexture">
+                    <div class="account_radio_btn btn-textural">
+                      <input id="radio_paper" type="radio" name="radioTex" value="paper" class="radio_account"
+                        data-id="1" checked>
+                      <label for="radio_paper" class="button-account">Бумажные</label>
+                    </div>
+
+                    <div class="account_radio_btn btn-smooth">
+                      <input id="radio_fabric" type="radio" name="radioTex" value="fabric" class="radio_account"
+                        data-id="2">
+                      <label for="radio_fabric" class="button-account">Тканевые</label>
+                    </div>
+
+                    <div class="account_radio_btn btn-frescoes">
+                      <input id="radio_vinyl" type="radio" name="radioTex" value="vinyl" class="radio_account"
+                        data-id="3">
+                      <label for="radio_vinyl" class="button-account">Виниловые</label>
+                    </div>
+
+                    <div class="account_radio_btn btn-frescoes mb-3">
+                      <input id="radio_flizelin-pvh" type="radio" name="radioTex" value="flizelin-pvh"
+                        class="radio_account" data-id="4">
+                      <label for="radio_flizelin-pvh" class="button-account"><span class="span-pvh">(с ПВХ)</span>
+                        Флизелиновые</label>
+                    </div>
+
+                    <div class="account_radio_btn btn-frescoes mb-3">
+                      <input id="radio_flizelin" type="radio" name="radioTex" value="flizelin" class="radio_account"
+                        data-id="5">
+                      <label for="radio_flizelin" class="button-account"><span class="span-pvh">(без
+                          ПВХ)</span>Флизелиновые</label>
+                    </div>
+
+                    <div class="account_radio_btn btn-frescoes mb-3">
+                      <input id="radio_paper-pvh" type="radio" name="radioTex" value="paper-pvh" class="radio_account"
+                        data-id="6">
+                      <label for="radio_paper-pvh" class="button-account"><span class="span-pvh">(с
+                          ПВХ)</span>Бумажные</label>
+                    </div>
+
+                    <div class="account_radio_btn btn-latex mb-3">
+                      <input id="radio_latex" type="radio" name="radioTex" value="latex" class="radio_account"
+                        data-id="7">
+                      <label for="radio_latex" class="button-account"><span class="span-pvh">(без ПВХ)</span>Латексная
+                        бумага</label>
+                    </div>
+                    <!-- <div id="line"></div> -->
+                  </div>
+                  <div class="account_display" style="height: 146px;">
+                    <div class="account_container" id="account_display-paper">
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="paper-plaster" type="radio" name="price-item" data-latex="299" data-id="1"
+                            value="1599" class="texture-item-input"  checked>
+                          <label for="paper-plaster" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Штукатурка.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Штукатурка</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="paper-сanvas" type="radio" name="price-item" data-latex="299" data-id="2"
+                            value="1599" class="texture-item-input">
+                          <label for="paper-сanvas" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Холст.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Холст</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="paper-dust" type="radio" name="price-item" data-latex="299" data-id="3"
+                            value="1599" class="texture-item-input">
+                          <label for="paper-dust" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Пыль.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Пыль</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="paper-sand" type="radio" name="price-item" data-latex="299" data-id="4"
+                            value="1599" class="texture-item-input">
+                          <label for="paper-sand" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Песок.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Песок</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="paper-small-flax" type="radio" name="price-item" data-latex="299" data-id="5"
+                            value="1599" class="texture-item-input">
+                          <label for="paper-small-flax" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Мелкий-лен.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Мелкий лен</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="paper-gloss" type="radio" name="price-item" data-latex="299" data-id="6"
+                            value="1599" class="texture-item-input">
+                          <label for="paper-gloss" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Лоск.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Лоск</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="paper-frost" type="radio" name="price-item" data-latex="299" data-id="7"
+                            value="1599" class="texture-item-input">
+                          <label for="paper-frost" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Иней.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Иней</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="paper-painting" type="radio" name="price-item" data-latex="299" data-id="8"
+                            value="1599" class="texture-item-input">
+                          <label for="paper-painting" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Живопись.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Живопись</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="paper-decorative-plaster" type="radio" name="price-item" data-latex="299"
+                            data-id="9" value="1599" class="texture-item-input">
+                          <label for="paper-decorative-plaster" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Декоративная-штукатурка.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Декоративная штукатурка</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="paper-smart-stick" type="radio" name="price-item" data-latex="299" data-id="10"
+                            value="1599" class="texture-item-input">
+                          <label for="paper-smart-stick" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Smart-Stick.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Smart Stick</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="paper-pintura" type="radio" name="price-item" data-latex="299" data-id="11"
+                            value="1599" class="texture-item-input">
+                          <label for="paper-pintura" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Pintura.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Pintura</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="account_container" id="account_display-fabric">
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="fabric-plaster" type="radio" name="price-item" data-latex="299" data-id="1"
+                            value="1599" class="texture-item-input" checked>
+                          <label for="fabric-plaster" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Штукатурка.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Штукатурка</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="fabric-сanvas" type="radio" name="price-item" data-latex="299" data-id="2"
+                            value="1599" class="texture-item-input">
+                          <label for="fabric-сanvas" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Холст.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Холст</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="fabric-dust" type="radio" name="price-item" data-latex="299" data-id="3"
+                            value="1599" class="texture-item-input">
+                          <label for="fabric-dust" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Пыль.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Пыль</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="fabric-sand" type="radio" name="price-item" data-latex="299" data-id="4"
+                            value="1599" class="texture-item-input">
+                          <label for="fabric-sand" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Песок.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Песок</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="fabric-small-flax" type="radio" name="price-item" data-latex="299" data-id="5"
+                            value="1599" class="texture-item-input">
+                          <label for="fabric-small-flax" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Мелкий-лен.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Мелкий лен</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="fabric-gloss" type="radio" name="price-item" data-latex="299" data-id="6"
+                            value="1599" class="texture-item-input">
+                          <label for="fabric-gloss" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Лоск.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Лоск</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="fabric-frost" type="radio" name="price-item" data-latex="299" data-id="7"
+                            value="1599" class="texture-item-input">
+                          <label for="fabric-frost" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Иней.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Иней</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="fabric-painting" type="radio" name="price-item" data-latex="299" data-id="8"
+                            value="1599" class="texture-item-input">
+                          <label for="fabric-painting" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Живопись.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Живопись</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="fabric-decorative-plaster" type="radio" name="price-item" data-latex="299"
+                            data-id="9" value="1599" class="texture-item-input">
+                          <label for="fabric-decorative-plaster" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Декоративная-штукатурка.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Декоративная штукатурка</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="fabric-smart-stick" type="radio" name="price-item" data-latex="299" data-id="10"
+                            value="1599" class="texture-item-input">
+                          <label for="fabric-smart-stick" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Smart-Stick.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Smart Stick</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="fabric-pintura" type="radio" name="price-item" data-latex="299" data-id="11"
+                            value="1599" class="texture-item-input">
+                          <label for="fabric-pintura" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Pintura.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Pintura</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="account_container" id="account_display-vinyl">
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="vinyl-plaster" type="radio" name="price-item" data-latex="299" data-id="1"
+                            value="1599" class="texture-item-input" checked>
+                          <label for="vinyl-plaster" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Штукатурка.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Штукатурка</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="vinyl-сanvas" type="radio" name="price-item" data-latex="299" data-id="2"
+                            value="1599" class="texture-item-input">
+                          <label for="vinyl-сanvas" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Холст.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Холст</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="vinyl-dust" type="radio" name="price-item" data-latex="299" data-id="3"
+                            value="1599" class="texture-item-input">
+                          <label for="vinyl-dust" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Пыль.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Пыль</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="vinyl-sand" type="radio" name="price-item" data-latex="299" data-id="4"
+                            value="1599" class="texture-item-input">
+                          <label for="vinyl-sand" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Песок.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Песок</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="vinyl-small-flax" type="radio" name="price-item" data-latex="299" data-id="5"
+                            value="1599" class="texture-item-input">
+                          <label for="vinyl-small-flax" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Мелкий-лен.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Мелкий лен</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="vinyl-gloss" type="radio" name="price-item" data-latex="299" data-id="6"
+                            value="1599" class="texture-item-input">
+                          <label for="vinyl-gloss" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Лоск.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Лоск</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="vinyl-frost" type="radio" name="price-item" data-latex="299" data-id="7"
+                            value="1599" class="texture-item-input">
+                          <label for="vinyl-frost" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Иней.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Иней</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="vinyl-painting" type="radio" name="price-item" data-latex="299" data-id="8"
+                            value="1599" class="texture-item-input">
+                          <label for="vinyl-painting" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Живопись.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Живопись</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="vinyl-decorative-plaster" type="radio" name="price-item" data-latex="299"
+                            data-id="9" value="1599" class="texture-item-input">
+                          <label for="vinyl-decorative-plaster" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Декоративная-штукатурка.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Декоративная штукатурка</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="vinyl-smart-stick" type="radio" name="price-item" data-latex="299" data-id="10"
+                            value="1599" class="texture-item-input">
+                          <label for="vinyl-smart-stick" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Smart-Stick.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Smart Stick</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="vinyl-pintura" type="radio" name="price-item" data-latex="299" data-id="11"
+                            value="1599" class="texture-item-input">
+                          <label for="vinyl-pintura" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/Pintura.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Pintura</h4>
+                              <span>Цветопередача</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">1599₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="account_container" id="account_display-flizelin-pvh">
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="flizelin-pvh-marble" type="radio" name="price-item" data-latex="920" data-id="16"
+                            value="210" class="texture-item-input" data-latex="920">
+                          <label for="flizelin-pvh-marble" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/flizelin-pvh/Мрамор.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Мрамор</h4>
+                              <span>текстура мрамора</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">210₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="flizelin-pvh-smooth" type="radio" name="price-item" data-latex="990" data-id="18"
+                            value="245" class="texture-item-input" data-latex="990">
+                          <label for="flizelin-pvh-smooth" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/flizelin-pvh/Гладь.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Гладь</h4>
+                              <span>гладкие</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">245₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="account_container" id="account_display-flizelin">
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="flizelin-satin" type="radio" name="price-item" data-latex="1455" data-id="19"
+                            value="477" class="texture-item-input" data-latex="1455">
+                          <label for="flizelin-satin" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/flizelin/Гладкие.jpg" alt="">
+                            <div class="label-container">
+                              <h4>SIHL 2511 Non-Woven design2wall Sol 195</h4>
+                              <span>Satin</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">477₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="flizelin-matt" type="radio" name="price-item" data-latex="1455" data-id="20"
+                            value="477" class="texture-item-input" data-latex="1455">
+                          <label for="flizelin-matt" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/flizelin/Гладкие.jpg" alt="">
+                            <div class="label-container">
+                              <h4>SIHL 2511 Non-Woven design2wall Sol 195</h4>
+                              <span>Matt</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">477₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="account_container" id="account_display-paper-pvh">
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="paper-pvh-sand" type="radio" name="price-item" data-latex="1899" data-id="21"
+                            value="681" class="texture-item-input" data-latex="1899">
+                          <label for="paper-pvh-sand" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/paper-pvh/крупный песок.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Magic PEBBLE Textured Vinyl Wallcovering 290g</h4>
+                              <span>крупный песок</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">681₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="account_container" id="account_display-latex">
+                      <div class="account_radio_btn-item d-flex">
+                        <div class="texture-item">
+                          <input id="latex-plaster" type="radio" name="price-item" data-latex="1499" data-id="22"
+                            value="481" class="texture-item-input" data-latex="1499">
+                          <label for="latex-plaster" class="button-account-item d-flex">
+                            <img src="/static/media/jpg/texture/latex/Гладкие.jpg" alt="">
+                            <div class="label-container">
+                              <h4>Magic MURAL PRO Latex-Based Wallcovering Paper</h4>
+                              <span>гладкие</span>
+                            </div>
+                          </label>
+                          <div class="label-container-two">
+                            <p class="account_price">481₽/М²</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+                <div class="account_item-three">
+                  <h4 class="add-order_title medium">Добавить к заказу:</h4>
+                  <div class="add-order_container">
+                    <div class="add-order_item add-order_checkbox">
+                      <input id="addItemOne" type="checkbox" name="add-latex" value="299"
+                        class="custom-checkbox add-order_input" data-id="2">
+                      <label for="addItemOne" class="add-order_label">
+                        <div class="label-container">
+                          <h4>Латексная печать</h4>
+                          <span class="add-order_price" id="addPriceLatex" data-resultLatex="">299 ₽/М²</span>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="add-order_item add-order_checkbox">
+                      <input id="addItemTwo" type="checkbox" name="add-glue" value="59"
+                        class="custom-checkbox add-order_input" data-id="1">
+                      <label for="addItemTwo" class="add-order_label">
+                        <div class="label-container label-glue">
+                          <h4>Добавить клей</h4>
+                          <span class="add-order_price">59 ₽/М²</span>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="add-order_item add-order_checkbox">
+                      <input id="addItemThree" type="checkbox" name="add-lacquer" value="399"
+                        class="custom-checkbox add-order_input" data-id="3">
+                      <label for="addItemThree" class="add-order_label">
+                        <div class="label-container">
+                          <h4>Покрыть лаком</h4>
+                          <span class="add-order_price">399 ₽/М²</span>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="rules_file">
+                      <a href="#" class="file-link">
+                        Правила монтажа обоев
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="order-result">
+                  <div class="order-result-info">
+                    <h4 class="order-result_title medium">Текущая стоимость заказа</h4>
+                    <p class="order-result-price medium" data-result="">
+                      1 599₽
+                    </p>
+                    <span>Минимальная стоимость заказа 2000 руб.</span>
+                  </div>
+                  <div class="order-step-two">ШАГ 2</div>
+                </div>
+              </div>
+            </div>
+            <form action="/order" class="account_calculator-registration d-none"
+              method="POST" id="form_order" enctype="multipart/form-data">
+              <input hidden name="width" value="100">
+              <input hidden name="height" value="100">
+              <input hidden name="product_id" value="1">
+              <input hidden name="category_id" value="1">
+              <input hidden type="file" name="file_img" id="imageInput" accept="image/jpeg, image/png, image/jpg">
+              <input hidden name="extra">
+              <div class="account_buttin-back">
+                <span class="account_buttin-back-item"> &lt; Назад</span>
+              </div>
+              <div class="account_registration-form d-flex flex-column">
+                <h3 class="registration_form-title">
+                  Оставьте ваши контактные данные
+                </h3>
+                <div class="registration_form-content d-flex flex-column">
+                  <div class="registration_form-input">
+                    <label for="registNameOrder">Имя</label>
+                    <input id="registNameOrder" type="text" name="name" placeholder="Ваше имя" required>
+                  </div>
+                  <div class="registration_form-input">
+                    <label for="registPhoneOrder">Телефон</label>
+                    <input id="registPhoneOrder" type="tel" name="phone"
+                      pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}" value="+7(___)___-__-__" placeholder="+7(___)___-__-__" required>
+                  </div>
+                  <div class="registration_form-input">
+                    <label for="registEmailOrder">E-mail</label>
+                    <input id="registEmailOrder" type="email" name="email"
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Ваша почта" required>
+                  </div>
+                </div>
+                <div class="registration_form-submit d-flex flex-column">
+                  <input type="submit" value="ОФОРМИТЬ ЗАКАЗ" class="form-submit">
+                  <div class="registration_agree add-order_item">
+                    <input id="regAgree" type="radio" name="registration" value="agree" class="custom-radio" required>
+                    <label for="regAgree" class="add-order_label">
+                      <div class="label-container">
+                        <p>
+                          Отправляя сведения, я даю свое согласие на обработку моих персональных данных в соответствии
+                          с
+                          законом №152-ФЗ «О персональных данных» от 27.07.2006, ознакомился и принимаю условия
+                          <a href="#">Пользовательского соглашения</a>, <a href="#">Политики конфиденциальности</a> и
+                          <a href="#">Договора оферты</a>.
+                        </p>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="calculator-registration-completed d-flex flex-column mt-5 d-none">
+              <h3>Спасибо за заявку!</h3>
+              <h4>Наши менеджеры вскоре свяжутся с вами для уточнения деталей</h4>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="banner">
+      <div class="banner_inner">
+        <div class="container">
+          <div class="banner_info">
+            <h2 class="banner_title">Не знаете, что выбрать?</h2>
+            <p class="banner_text">Оставьте заявку и наши специалисты проконсультируют вас и помогут подобрать лучший
+              вариант дизайна для оформления стены.</p>
+            <div class="banner_btn-container">
+              <button class="banner_btn btn-main btn-popup">ОСТАВИТЬ ЗАЯВКУ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="best-works" id="gallery">
+      <div class="container">
+        <div class="best-works_inner row">
+          <div class="best-works_info col-lg-5">
+            <h1 class="best-works_title">
+              Наши лучшие работы
+            </h1>
+            <p class="best-works_text">
+              Вдохновляйтесь нашими готовыми дизайнами или создайте свой собственный уникальный фотообои.
+            </p>
+          </div>
+          <div class="best-works_slider col-lg-7">
+            <div class="bestSwiper">
+              <div class="slider-wrapper">
+                <div class="slider">
+                  <div class="slide one-slide">
+                    <img src="/static/media/jpg/best-slide-1.jpg" alt="">
+                  </div>
+                  <div class="slide">
+                    <img src="/static/media/jpg/best-slide-2.jpg" alt="">
+                  </div>
+                  <div class="slide third-slide">
+                    <img src="/static/media/jpg/best-slide-3.jpg" alt="">
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="swiper-pagination"></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="map" id="contact">
+      <div class="main_map map">
+        <div class="main_map-container map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2246.7027341901307!2d37.63728487740328!3d55.72891807307529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54b1f1dd1e4d3%3A0x5693282e8a992831!2z0J_QsNCy0LXQu9C10YbQutCw0Y8g0L_Quy4sIDHQkCDRgdGC0YDQvtC10L3QuNC1IDEsIDksINCc0L7RgdC60LLQsCwgMTAyMTUx!5e0!3m2!1sru!2sru!4v1699985390737!5m2!1sru!2sru"
+            width="100%" height="748" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer_inner">
+      <div class="container">
+        <div class="row footer_row">
+          <div class="col-lg-3 footer_info">
+            <div class="footer_logo">
+              <img src="/static/media/svg/logo.svg" alt="logo">
+            </div>
+            <div class="footer_streat">
+              <a href="https://maps.app.goo.gl/NHnhZygLH23ioyoAA" target="_blank">
+                <span>
+                  Павелецкая площадь, 1А, стр. 1, офис 9, Россия, Москва
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-2 footer_contact d-flex flex-column">
+            <div class="footer_email">
+              <a href="mailto:oboi@usexpo.ru">oboi@usexpo.ru</a>
+            </div>
+            <div class="footer_phone">
+              <a href="tel:+74959700430"><span>+7 (495) 970-04-30</span></a>
+            </div>
+          </div>
+          <div class="col-lg-3 footer_nav">
+            <ul class="nav_list-footer d-flex flex-column">
+              <a href="/static/media/file/Договор публичной оферты.docx" download class="nav_list-link">
+                <li class="nav-item">
+                  Договор оферты
+                </li>
+              </a>
+              <a href="#" class="nav_list-link">
+                <li class="nav-item">
+                  Политика конфиденциальности
+                </li>
+              </a>
+              <a href="#" class="nav_list-link">
+                <li class="nav-item">
+                  Доставка и возврат
+                </li>
+              </a>
+            </ul>
+          </div>
+          <div class="col-lg-4 d-flex footer_button flex-column gap-2 aling-items-center">
+            <button class="btn header_btn footer_btn btn-popup">ОБРАТНЫЙ ЗВОНОК</button>
+
+            <div class="developers__body mt-4">
+              <a href="https://clever-lab.net/">
+                  <img class="developers__logo" src="/static/media/png/devlogo.png" alt="CleVer" />
+              </a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="/static/scripts/main.js"></script>
+  <script src="/static/scripts/record.js"></script>
+  <script src="/static/scripts/animation.js"></script>
+  <script src="/static/scripts/calculater.js"></script>
+  <script src="/static/scripts/slider.js"></script>
+  <script>
+    function setCursorPosition(pos, e) {
+      e.focus();
+      if (e.setSelectionRange) e.setSelectionRange(pos, pos);
+      else if (e.createTextRange) {
+        var range = e.createTextRange();
+        range.collapse(true);
+        range.moveEnd("character", pos);
+        range.moveStart("character", pos);
+        range.select();
+      }
+    }
+
+    function mask(e) {
+      console.log('mask',e);
+      var matrix = this.placeholder,// .defaultValue
+          i = 0,
+          def = matrix.replace(/\D/g, ""),
+          val = this.value.replace(/\D/g, "");
+      def.length >= val.length && (val = def);
+      matrix = matrix.replace(/[_\d]/g, function(a) {
+        return val.charAt(i++) || "_"
+      });
+      this.value = matrix;
+      i = matrix.lastIndexOf(val.substr(-1));
+      i < matrix.length && matrix != this.placeholder ? i++ : i = matrix.indexOf("_");
+      setCursorPosition(i, this)
+    }
+    window.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll("[type=\"tel\"]").forEach(element => {
+        element.addEventListener("input", mask, false);
+        element.focus();
+        setCursorPosition(3, element);
+      })
+    });
+  </script>
+</body>
+
+</html>
